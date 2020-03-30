@@ -1,0 +1,16 @@
+{
+  "name": "utahfreelance",
+  "version": "1.0.0",
+  "description": "utah freelance website",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server",
+    "dev": "nodemon server"
+  },
+  "author": "Taylor Covington",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
