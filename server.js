@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const colors = require('colors')
 const logger = require('./middleware/logger.middleware')
 const connectDB = require('./config/db')
+const errorHandler = require('./middleware/error.middleware')
 
 // Load env vars
 dotenv.config({
@@ -36,6 +37,7 @@ if (process.env.NODE_ENV === 'development') {
 // this is how the route and controller know what the URL is
 app.use('/api/v1/freelancers', freelancers)
 
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
