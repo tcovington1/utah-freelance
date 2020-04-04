@@ -97,6 +97,9 @@ const FreelancerSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
+}, {
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
 });
 
 // Create freelancer slug from name
@@ -126,6 +129,21 @@ FreelancerSchema.pre('save', async function(next) {
   this.address = undefined;
 
   next();
+});
+
+// Cascade delete services when a freelancer is deleted
+FreelancerSchema.pre('remove', async function (next) {
+  console.log(`Services being removed from freelancer ${this._id}`)
+  await this.model('Service').deleteMany({ bootcamp: this._id });
+  next();
+})
+
+// Reverse populate with virtuals
+FreelancerSchema.virtual('services', {
+  ref: 'Service',
+  localField: '_id',
+  foreignField: 'freelancer',
+  justOne: false
 })
 
 module.exports = mongoose.model('Freelancer', FreelancerSchema)

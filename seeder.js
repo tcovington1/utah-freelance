@@ -10,6 +10,7 @@ dotenv.config({
 
 //load models
 const Freelancer = require('./models/Freelancer.model.js')
+const Offering = require('./models/Offering.model.js')
 
 //Connect to Db
 mongoose.connect(process.env.MONGO_URI, {
@@ -21,6 +22,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // Read the JSON files
 const freelancers = JSON.parse(fs.readFileSync(`${__dirname}/_data/freelancers.json`, 'utf-8'))
+const offerings = JSON.parse(fs.readFileSync(`${__dirname}/_data/freelancers.json`, 'utf-8'))
 
 // import into DB
 const importData = async () => {

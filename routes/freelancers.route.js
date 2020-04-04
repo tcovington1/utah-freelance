@@ -7,7 +7,13 @@ const {
   deleteFreelancer
 } = require('../controllers/freelancers.controller')
 
+// Include other resource routers
+const serviceRouter = require('./services.route')
+
 const router = express.Router();
+
+// Re-route into other resource routers
+router.use('/:freelancerId/services', serviceRouter)
 
 // We just pulled in the controller api urls
 //these two only need the normal url from the controller, no id

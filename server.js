@@ -17,6 +17,7 @@ connectDB();
 
 // we are bringing in the router files to use
 const freelancers = require('./routes/freelancers.route')
+const services = require('./routes/services.route')
 
 const app = express();
 
@@ -36,6 +37,7 @@ if (process.env.NODE_ENV === 'development') {
 // Mount routers
 // this is how the route and controller know what the URL is
 app.use('/api/v1/freelancers', freelancers)
+app.use('/api/v1/services', services)
 
 app.use(errorHandler);
 
