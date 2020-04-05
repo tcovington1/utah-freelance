@@ -3,22 +3,24 @@ const asyncHandler = require('../middleware/async.middleware')
 const Service = require('../models/Service.model')
 const Freelancer = require('../models/Freelaner.model')
 
-// @desc Get offerings
+// @desc Get services
 // @route GET /api/v1/offerings
 // @route GET /api/v1/freelancers/:freelancerId/offerings
 // @access Public (don't need a token)
 exports.getServices = asyncHandler(async (req, res, next) => {
-  let query;
 
   if (req.params.freelancerId) {
-    query = Service.find({
+    const services = await Service.find({
       freelancer: req.params.freelancerId
     });
+
+    return res.status(200).json({
+      success: true,
+      count: courses.length,
+      data: courses
+    })
   } else {
-    query = Service.find().populate({
-      path: 'freelancer',
-      select: 'name bio'
-    });
+    res.status(200).json(res.advancedResults);
   }
 
   const services = await query;
@@ -66,5 +68,43 @@ exports.addService = asyncHandler(async (req, res, next) => {
   res.status(200).json({
     success: true,
     data: service
+  })
+});
+// @desc update a service
+// @route PUT /api/v1/services/:id
+// @access Private (does need a token)
+exports.updateService = asyncHandler(async (req, res, next) => {
+  let service = await Service.findById(req.params.id);
+
+  if (!service) {
+    return next(new ErrorResponse(`No service with the id of ${req.params.id}`), 404)
+  }
+
+  service = await Service.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true
+  })
+
+  res.status(200).json({
+    success: true,
+    data: service
+  })
+});
+
+// @desc delete a service
+// @route DELETE /api/v1/services/:id
+// @access Private (does need a token)
+exports.deleteService = asyncHandler(async (req, res, next) => {
+  const service = await Service.findById(req.params.id);
+
+  if (!service) {
+    return next(new ErrorResponse(`No service with the id of ${req.params.id}`), 404)
+  }
+
+  await service.remove()
+
+  res.status(200).json({
+    success: true,
+    data: {}
   })
 });

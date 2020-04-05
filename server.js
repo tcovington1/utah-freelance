@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
@@ -5,6 +6,7 @@ const colors = require('colors')
 const logger = require('./middleware/logger.middleware')
 const connectDB = require('./config/db')
 const errorHandler = require('./middleware/error.middleware')
+const fileupload = require('express-fileupload')
 
 // Load env vars
 dotenv.config({
@@ -31,6 +33,12 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
   //using morgan here instead of our own logger because it shows us more information like server status and time
 }
+
+// File Uploading
+app.use(fileupload());
+
+// Set static folder
+app.use(express.static(path.join(__dirname, 'public')))
 
 
 // Now we mount the route files from line 4 to a url

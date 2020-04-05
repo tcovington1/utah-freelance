@@ -4,8 +4,12 @@ const {
   getFreelancer,
   createFreelancer,
   updateFreelancer,
-  deleteFreelancer
-} = require('../controllers/freelancers.controller')
+  deleteFreelancer,
+  freelancerPhotoUpload
+} = require('../controllers/freelancers.controller');
+
+const Freelancer = require('../models/Freelaner.model')
+const advancedResults = require('../middleware/advancedResults.middleware');
 
 // Include other resource routers
 const serviceRouter = require('./services.route')
@@ -20,7 +24,7 @@ router.use('/:freelancerId/services', serviceRouter)
 // the URL can be found in the server.js file
 router
   .route('/')
-  .get(getFreelancers)
+  .get(advancedResults(Freelancer, 'services'), getFreelancers)
   .post(createFreelancer);
 
 //these need the id
@@ -29,5 +33,7 @@ router
   .get(getFreelancer)
   .put(updateFreelancer)
   .delete(deleteFreelancer);
+
+router.route('/:id/photo').put(freelancerPhotoUpload)
 
 module.exports = router;
