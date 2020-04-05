@@ -18,8 +18,10 @@ connectDB();
 
 
 // we are bringing in the router files to use
+//Anytime we create a route, need to bring it in here.
 const freelancers = require('./routes/freelancers.route')
 const services = require('./routes/services.route')
+const auth = require('./routes/auth.route')
 
 const app = express();
 
@@ -46,6 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 // this is how the route and controller know what the URL is
 app.use('/api/v1/freelancers', freelancers)
 app.use('/api/v1/services', services)
+app.use('/api/v1/auth', auth)
 
 app.use(errorHandler);
 
