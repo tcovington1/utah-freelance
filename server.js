@@ -4,9 +4,10 @@ const dotenv = require('dotenv')
 const morgan = require('morgan')
 const colors = require('colors')
 const logger = require('./middleware/logger.middleware')
-const connectDB = require('./config/db')
+const cookieParser = require('cookie-parser')
 const errorHandler = require('./middleware/error.middleware')
 const fileupload = require('express-fileupload')
+const connectDB = require('./config/db')
 
 // Load env vars
 dotenv.config({
@@ -27,6 +28,9 @@ const app = express();
 
 // body parser - this helps us get req.body in controllers
 app.use(express.json());
+
+// Cookie Parser
+app.use(cookieParser());
 
 
 // Dev logging middleware
