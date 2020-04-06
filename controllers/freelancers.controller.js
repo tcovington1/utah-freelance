@@ -38,6 +38,19 @@ exports.getFreelancer = asyncHandler(async (req, res, next) => {
 exports.createFreelancer = asyncHandler(async (req, res, next) => {
   // whatever we want to do go here
 
+  // Add user to req.body
+  req.body.user = req.user.id;
+
+  // Check for published freelaner profile
+  const publishedFreelancer = await Freelancer.findOne({
+    user: req.user.id
+  })
+
+  // Id the user is not the admin, they can only add one freelancer profile
+  if (publishedFreelancer && req.user.role !== 'admin') {
+    return next(new ErrorResponse(`The user with ID ${req.user.id} has already published a freelancer profile`, 400))
+  }
+
   const freelancer = await Freelancer.create(req.body);
 
   res.status(201).json({

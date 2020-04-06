@@ -96,10 +96,20 @@ const FreelancerSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
+  },
+  user: {
+    type: mongoose.Schema.ObjectId,
+    //which model to reference? 
+    ref: 'User',
+    required: true
   }
 }, {
-  toJSON: { virtuals: true },
-  toObject: { virtuals: true }
+  toJSON: {
+    virtuals: true
+  },
+  toObject: {
+    virtuals: true
+  }
 });
 
 // Create freelancer slug from name
@@ -111,12 +121,12 @@ FreelancerSchema.pre('save', function (next) {
 });
 
 //Geocode & create location field
-FreelancerSchema.pre('save', async function(next) {
+FreelancerSchema.pre('save', async function (next) {
   const loc = await geocoder.geocode(this.address);
   this.location = {
     type: 'Point',
     coordinates: [loc[0].longitude, loc[0].latitude],
-    formattedAddress: c=loc[0].formattedAddress,
+    formattedAddress: c = loc[0].formattedAddress,
     street: loc[0].streetName,
     city: loc[0].city,
     state: loc[0].stateCode,
@@ -134,7 +144,9 @@ FreelancerSchema.pre('save', async function(next) {
 // Cascade delete services when a freelancer is deleted
 FreelancerSchema.pre('remove', async function (next) {
   console.log(`Services being removed from freelancer ${this._id}`)
-  await this.model('Service').deleteMany({ bootcamp: this._id });
+  await this.model('Service').deleteMany({
+    bootcamp: this._id
+  });
   next();
 })
 

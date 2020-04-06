@@ -16,6 +16,9 @@ const serviceRouter = require('./services.route')
 
 const router = express.Router();
 
+// bring in protected route middleware
+const { protect, authorize } = require('../middleware/auth.middleware')
+
 // Re-route into other resource routers
 router.use('/:freelancerId/services', serviceRouter)
 
@@ -25,15 +28,15 @@ router.use('/:freelancerId/services', serviceRouter)
 router
   .route('/')
   .get(advancedResults(Freelancer, 'services'), getFreelancers)
-  .post(createFreelancer);
+  .post(protect, authorize('publisher', 'admin'), createFreelancer);
 
 //these need the id
 router
   .route('/:id')
   .get(getFreelancer)
-  .put(updateFreelancer)
-  .delete(deleteFreelancer);
+  .put(protect, authorize('publisher', 'admin'), updateFreelancer)
+  .delete(protect, authorize('publisher', 'admin'), deleteFreelancer);
 
-router.route('/:id/photo').put(freelancerPhotoUpload)
+router.route('/:id/photo').put(protect, authorize('publisher', 'admin'), freelancerPhotoUpload)
 
 module.exports = router;
