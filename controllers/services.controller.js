@@ -56,12 +56,19 @@ exports.getService = asyncHandler(async (req, res, next) => {
 // @access Private (does need a token)
 exports.addService = asyncHandler(async (req, res, next) => {
   req.body.freelancer = req.params.freelancerId;
+  req.body.user = req.user.id;
 
   const freelancer = await Freelancer.findById(req.params.freelancerId);
 
   if (!freelancer) {
-    return next(new ErrorResponse(`No freelancer with the id of ${req.params.bootcampId}`), 404)
+    return next(new ErrorResponse(`No freelancer with the id of ${req.params.freelancerId}`), 404)
   }
+
+  // make sure user is freelancer profile owner
+  if (freelancer.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(new ErrorResponse(`User ${req.user.id} is not authorized to add a service to freelancer profile ${freelaner._id}`, 401));
+  }
+
 
   const service = await Service.create(req.body)
 
@@ -79,6 +86,12 @@ exports.updateService = asyncHandler(async (req, res, next) => {
   if (!service) {
     return next(new ErrorResponse(`No service with the id of ${req.params.id}`), 404)
   }
+
+  // make sure user is freelancer service owner
+  if (service.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(new ErrorResponse(`User ${req.user.id} is not authorized to update the service ${service._id}`, 401));
+  }
+
 
   service = await Service.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
@@ -100,6 +113,11 @@ exports.deleteService = asyncHandler(async (req, res, next) => {
   if (!service) {
     return next(new ErrorResponse(`No service with the id of ${req.params.id}`), 404)
   }
+
+  // make sure user is freelancer service owner
+  if(service.user.toString() !== req.user.id && req.user.role !== 'admin') {
+  return next(new ErrorResponse(`User ${req.user.id} is not authorized to delete the service ${service._id}`, 401));
+}
 
   await service.remove()
 

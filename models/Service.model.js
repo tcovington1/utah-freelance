@@ -20,8 +20,13 @@ const ServiceSchema = new mongoose.Schema({
     //which model to reference? 
     ref: 'Freelancer',
     required: true
+  },
+  user: {
+    type: mongoose.Schema.ObjectId,
+    //which model to reference? 
+    ref: 'User',
+    required: true
   }
-
 });
 
 module.exports = mongoose.model('Service', ServiceSchema)

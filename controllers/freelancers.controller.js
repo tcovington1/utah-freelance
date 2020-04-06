@@ -71,14 +71,21 @@ exports.createFreelancer = asyncHandler(async (req, res, next) => {
 exports.updateFreelancer = asyncHandler(async (req, res, next) => {
   // whatever we want to do go here
 
-  const freelancer = await Freelancer.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true
-  });
+  let freelancer = await Freelancer.findById(req.params.id);
 
   if (!freelancer) {
     return next(new ErrorResponse(`Freelancer not found with id of ${req.params.id}`, 404));
   }
+
+  // make sure user is freelancer profile owner
+  if(freelancer.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(new ErrorResponse(`User ${req.params.id} is not authorized to update this freelacer profile`, 401));
+  }
+
+  freelancer = await Freelancer.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true
+  });
 
   res.status(200).json({
     success: true,
@@ -98,6 +105,12 @@ exports.deleteFreelancer = asyncHandler(async (req, res, next) => {
   if (!freelancer) {
     return next(new ErrorResponse(`Freelancer not found with id of ${req.params.id}`, 404));
   }
+
+  // make sure user is freelancer profile owner
+  if(freelancer.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(new ErrorResponse(`User ${req.params.id} is not authorized to delete this freelacer profile`, 401));
+  }
+  
 
   //this will use the middle created in model to cascade delete services
   freelancer.remove();
@@ -120,6 +133,11 @@ exports.freelancerPhotoUpload = asyncHandler(async (req, res, next) => {
   if (!freelancer) {
     return next(new ErrorResponse(`Freelancer not found with id of ${req.params.id}`, 404));
   }
+
+    // make sure user is freelancer profile owner
+    if(freelancer.user.toString() !== req.user.id && req.user.role !== 'admin') {
+      return next(new ErrorResponse(`User ${req.params.id} is not authorized to update this freelacer profile`, 401));
+    }  
 
   //this will use the middle created in model to cascade delete services
   if (!req.files) {
