@@ -2,11 +2,12 @@ const express = require('express');
 const {
   register,
   login,
+  logout,
   getMe,
   forgotPassword,
   resetPassword,
   updateDetails,
-  updatePassword
+  updatePassword,
 } = require('../controllers/auth.controller');
 
 const router = express.Router();
@@ -17,6 +18,7 @@ const {
 
 router.post('/register', register);
 router.post('/login', login);
+router.get('/logout', logout);
 router.post('/forgotpassword', forgotPassword);
 router.put('/resetpassword/:resettoken', resetPassword);
 //! Protected Routes

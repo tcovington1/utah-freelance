@@ -78,6 +78,20 @@ exports.login = asyncHandler(async (req, res, next) => {
   // })
 });
 
+//* @desc Log user out / clear cookie
+//* @route GET /api/v1/auth/logout
+//* @access Private (does need a token)
+exports.logout = asyncHandler(async (req, res, next) => {
+  res.cookie('token', 'none', {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true
+  })
+
+  res.status(200).json({
+    success: true,
+    data: {}
+  })
+})
 //* @desc Get current logged in user
 //* @route GET /api/v1/auth/me
 //* @access Private (does need a token)
@@ -119,7 +133,7 @@ exports.updatePassword = asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.user.id).select('+password');
 
   // Check current password
-  if(!(await user.matchPassword(req.body.currentPassword))) {
+  if (!(await user.matchPassword(req.body.currentPassword))) {
     return next(new ErrorResponse('Passwrod is incorrect', 401));
   }
 
