@@ -8,13 +8,13 @@ const {
 } = require('../controllers/services.controller')
 
 const Service = require('../models/Service.model')
-const advancedResults = require('../middleware/advancedResults.middleware')
 
 const router = express.Router({
   mergeParams: true
 });
 
 // bring in protected route middleware
+const advancedResults = require('../middleware/advancedResults.middleware')
 const {
   protect,
   authorize

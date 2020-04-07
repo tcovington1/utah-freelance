@@ -9,13 +9,13 @@ const {
 } = require('../controllers/freelancers.controller');
 
 const Freelancer = require('../models/Freelaner.model')
-const advancedResults = require('../middleware/advancedResults.middleware');
 
 // Include other resource routers
 const serviceRouter = require('./services.route')
 
 const router = express.Router();
 
+const advancedResults = require('../middleware/advancedResults.middleware');
 // bring in protected route middleware
 const { protect, authorize } = require('../middleware/auth.middleware')
 

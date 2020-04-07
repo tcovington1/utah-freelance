@@ -23,6 +23,7 @@ connectDB();
 const freelancers = require('./routes/freelancers.route')
 const services = require('./routes/services.route')
 const auth = require('./routes/auth.route')
+const users = require('./routes/users.route')
 
 const app = express();
 
@@ -53,6 +54,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/api/v1/freelancers', freelancers)
 app.use('/api/v1/services', services)
 app.use('/api/v1/auth', auth)
+app.use('/api/v1/users', users)
 
 app.use(errorHandler);
 
