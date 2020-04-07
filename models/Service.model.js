@@ -14,6 +14,10 @@ const ServiceSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Please enter a price for your service']
   },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
   // relationship to freelancer
   freelancer: {
     type: mongoose.Schema.ObjectId,

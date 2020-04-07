@@ -141,7 +141,7 @@ FreelancerSchema.pre('save', async function (next) {
   next();
 });
 
-// Cascade delete services when a freelancer is deleted
+//! Cascade delete services when a freelancer is deleted
 FreelancerSchema.pre('remove', async function (next) {
   console.log(`Services being removed from freelancer ${this._id}`)
   await this.model('Service').deleteMany({

@@ -12,6 +12,7 @@ const Freelancer = require('../models/Freelaner.model')
 
 // Include other resource routers
 const serviceRouter = require('./services.route')
+const reviewRouter = require('./reviews.route')
 
 const router = express.Router();
 
@@ -21,6 +22,7 @@ const { protect, authorize } = require('../middleware/auth.middleware')
 
 // Re-route into other resource routers
 router.use('/:freelancerId/services', serviceRouter)
+router.use('/:freelancerId/reviews', reviewRouter)
 
 // We just pulled in the controller api urls
 //these two only need the normal url from the controller, no id

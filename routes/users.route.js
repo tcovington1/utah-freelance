@@ -26,13 +26,13 @@ router.use(authorize('admin'));
 
 router
   .route('/')
-    .get(advancedResults(User), getUsers)
-    .post(createUser)
+  .get(advancedResults(User), getUsers)
+  .post(createUser)
 
 router
   .route('/:id')
-    .get(getUser)
-    .put(updateUser)
-    .delete(deleteUser)
+  .get(getUser)
+  .put(updateUser)
+  .delete(deleteUser)
 
 module.exports = router;
