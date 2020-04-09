@@ -10,17 +10,20 @@ import accountIcon from '@iconify/icons-mdi/account';
 const Navbar = () => {
   return(
     <nav className='navbar'>
-      <h1>
+      <h1 className='logo'>
         Utah Freelance
       </h1>
       <ul>
         <li>
+          <a href="">Home</a>
           {/* <Link>Home</Link>              */}
         </li>
         <li>
+          <a href="">Home</a>
           {/* <Link>Home</Link>              */}
         </li>
         <li>
+          <a href="">Home</a>
           {/* <Link>Home</Link>              */}
         </li>
       </ul>
