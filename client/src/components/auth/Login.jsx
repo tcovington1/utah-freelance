@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import { Link, Redirect } from 'react-router-dom';
-// import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
-// import { login } from '../../actions/auth.actions'
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { login } from '../../redux/actions/auth.actions'
 
 
 //Styling
@@ -11,8 +11,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { Icon, InlineIcon } from '@iconify/react';
 import accountIcon from '@iconify/icons-mdi/account';
 
-// login, isAuthenticated 
-const Login = ({ }) => {
+const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -26,13 +25,13 @@ const Login = ({ }) => {
 
   const onSubmit = async e => {
     e.preventDefault();  
-      // login(email,password);
+    login(email,password);
   }
 
   // //Redirect if logged in
-  // if(isAuthenticated) {
-  //   return <Redirect to='/dashboard'/>;
-  // }
+  if(isAuthenticated) {
+    return <Redirect to='/dashboard'/>;
+  }
 
   return (
     <>
@@ -45,16 +44,15 @@ const Login = ({ }) => {
         <h4>Password: 123456</h4>
       </div> */}
       {/* <div className="form-container_login"> */}
-      {/* onSubmit={onSubmit}  */}
-      <form className='form'>
+      
+      <form className='form' onSubmit={onSubmit} >
         <div className="form-group"> 
-       
           <input 
             type="email" 
             placeholder='Email Address'
             name='email'
-            // value={email}
-            // onChange={ e => onChange(e)}
+            value={email}
+            onChange={ e => onChange(e)}
             required
             />
             {/* <label className='form-group_label'>
@@ -69,8 +67,8 @@ const Login = ({ }) => {
             placeholder='Password' 
             minLength='6'
             name='password'
-            // value={password}
-            // onChange={ e => onChange(e)}
+            value={password}
+            onChange={ e => onChange(e)}
             required  
             />
        
@@ -84,14 +82,14 @@ const Login = ({ }) => {
   )
 }
 
-// Login.propTypes = {
-//   login: PropTypes.func.isRequired,
-//   isAuthenticated: PropTypes.bool,
-// };
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+};
 
-// const mapStateToProps = state => ({
-//   // this will give us all the state found in auth.reducer.js
-//   isAuthenticated: state.auth.isAuthenticated
-// })
+const mapStateToProps = state => ({
+  // this will give us all the state found in auth.reducer.js
+  isAuthenticated: state.auth.isAuthenticated
+})
 
-export default Login
+export default connect(mapStateToProps, { login })(Login)

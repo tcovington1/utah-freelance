@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { register } from '../../redux/actions/auth.actions'
+import { setAlert } from '../../redux/actions/alerts.actions'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-export const Register = ({ register }) => {
+export const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -21,7 +22,7 @@ export const Register = ({ register }) => {
   const onSubmit = async e => {
     e.preventDefault();
     if(password !== password2) {
-      // setAlert('Passwords do not match', 'danger')
+      setAlert('Passwords do not match', 'danger')
       console.log('passwords do not match')
     } else {
       register({ firstName, lastName, email, role, password });
@@ -38,9 +39,9 @@ export const Register = ({ register }) => {
   }
 
   // Redirect once registered
-  // if(isAuthenticated) {
-  //   return <Redirect to='/dashboard' />;
-  // }
+  if(isAuthenticated) {
+    return <Redirect to='/dashboard' />;
+  }
 
   return (
     
@@ -123,7 +124,14 @@ export const Register = ({ register }) => {
 }
 
 Register.protoTypes = {
+  alert: PropTypes.func.isRequired,
   regiser: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
 }
 
-export default connect(null, {register})(Register)
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+
+export default connect(mapStateToProps, {setAlert, register})(Register)
