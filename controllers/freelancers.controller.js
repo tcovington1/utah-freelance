@@ -32,6 +32,7 @@ exports.getFreelancer = asyncHandler(async (req, res, next) => {
   })
 });
 
+
 // @desc Create new freelancer
 // @route POST /api/v1/freelancers
 // @access Private (need a token)
@@ -176,3 +177,4 @@ exports.freelancerPhotoUpload = asyncHandler(async (req, res, next) => {
     data: file.name
   });
 });
+

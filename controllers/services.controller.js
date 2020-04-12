@@ -16,8 +16,8 @@ exports.getServices = asyncHandler(async (req, res, next) => {
 
     return res.status(200).json({
       success: true,
-      count: courses.length,
-      data: courses
+      count: services.length,
+      data: services
     })
   } else {
     res.status(200).json(res.advancedResults);
