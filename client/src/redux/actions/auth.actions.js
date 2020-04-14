@@ -21,7 +21,7 @@ export const loadUser = () => async dispatch => {
 
     dispatch({
       type: USER_LOADED,
-      payload: res.data
+      payload: res.data.data
     });
 
     
@@ -112,6 +112,11 @@ export const login = (
 }
 
 // Logout / Clear Profile
-export const logout = () => dispatch => {
-  dispatch({ type: LOGOUT })
+export const logout = () => async dispatch => {
+  // dispatch({ type: LOGOUT })
+  await axios.get('/auth/logout')
+
+  dispatch({
+    type: LOGOUT
+  })
 }

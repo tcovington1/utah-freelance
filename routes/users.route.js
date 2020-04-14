@@ -2,12 +2,14 @@ const express = require('express')
 const {
   getUsers,
   getUser,
+  getUserFreelancer,
   createUser,
   updateUser,
   deleteUser
 } = require('../controllers/users.controller')
 
 const User = require('../models/User.model')
+const Freelancer = require('../models/Freelaner.model')
 
 const router = express.Router({
   mergeParams: true
@@ -27,6 +29,7 @@ router.use(authorize('admin'));
 router
   .route('/')
   .get(advancedResults(User), getUsers)
+  .get(getUserFreelancer)
   .post(createUser)
 
 router

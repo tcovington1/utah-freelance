@@ -11,3 +11,11 @@ export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGOUT = 'LOGOUT'
 
+// Profile
+export const GET_PROFILE = 'GET_PROFILE'
+export const PROFILE_ERROR = 'PROFILE_ERROR'
+
+// Freelancers
+export const UPDATE_FREELANCER_LIST = 'UPDATE_FREELANCER_LIST'
+export const FREELANCERS_ERROR = 'FREELANCERS_ERROR'
+

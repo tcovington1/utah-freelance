@@ -1,6 +1,7 @@
 const ErrorResponse = require('../utils/errorResponse.utils')
 const asyncHandler = require('../middleware/async.middleware')
-const User = require('../models/User.model')
+const User = require('../models/User.model');
+const Freelancer = require('../models/Freelaner.model')
 
 //* @desc Get all users
 //* @route GET /api/v1/auth/users
@@ -59,3 +60,60 @@ exports.deleteUser = asyncHandler(async (req, res, next) => {
     data: {}
   })
 });
+
+//* @desc Get Users freelancer profile
+//* @route GET /api/v1/auth/user/:id/freelancer
+//* @access private (does need a token)
+// exports.getUserFreelancer = asyncHandler(async (req, res, next) => {
+//   // whatever we want to do go here
+//   const user = await User.findById(req.params.id);
+//   console.log(user)
+
+//   if (!user) {
+//     return next(new ErrorResponse(`Freelancer not found with id of ${req.params.id}`, 404));
+//   }
+
+//       // make sure user is freelancer profile owner
+//       if (user.toString() !== req.user.id && req.user.role !== 'admin') {
+//         return next(new ErrorResponse(`User ${req.user.id} is not authorized to view this freelancer profile ${freelaner._id}`, 401));
+//       }
+  
+//   if (user) {
+//     console.log(user)
+//     const freelancer = await Freelancer.find({
+//       user: req.params.id
+//     });
+
+//     res.status(200).json({
+//       success: true,
+//       data: freelancer
+//     })
+//   } 
+
+//   const freelancer = await query;
+
+//   res.status(200).json({
+//     success: true,
+//     data: freelancer
+//   })
+
+// });
+
+exports.getUserFreelancer = async (req, res, next) => {
+  console.log('getting it now!')
+  // try {
+  //   const freelancer = await Freelancer.findOne({ user: req.user.id }).populate(
+  //     'user', 
+  //     ['firstName']
+  //     );
+
+  //   if(!freelancer) {
+  //     return res.status(400).json({ msg: 'There is no freelancer for this user'});
+  //   }
+  //   res.json(freelancer);
+
+  // } catch (error) {
+  //   console.error(error.message);
+  //   res.status(500).send("Server Error, see routes/api/profile.js")
+  // }
+};
