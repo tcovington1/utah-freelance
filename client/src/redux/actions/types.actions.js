@@ -10,12 +10,15 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGOUT = 'LOGOUT'
+export const PASSWORD_RESET = 'PASSWORD_RESET'
 
 // Profile
 export const GET_PROFILE = 'GET_PROFILE'
+export const CLEAR_PROFILE = 'CLEAR_PROFILE'
 export const PROFILE_ERROR = 'PROFILE_ERROR'
 
 // Freelancers
+export const GET_FREELANCER = 'GET_FREELANCER'
 export const UPDATE_FREELANCER_LIST = 'UPDATE_FREELANCER_LIST'
-export const FREELANCERS_ERROR = 'FREELANCERS_ERROR'
+export const FREELANCER_ERROR = 'FREELANCER_ERROR'
 

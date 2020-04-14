@@ -15,11 +15,13 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Dashboard from './components/user-dashboard/Dashboard'
 import Alert from './components/layout/Alert';
-import Freelancers from './components/freelancers/Freelancers'
+import Freelancers from './components/freelancers/FreelancerList'
 import ForgotPassword from './components/auth/ForgotPassword'
 
 // Private route
 import PrivateRoute from './components/auth/PrivateRoute'
+import CreateFreelancer from './components/freelancers/freelancer-form/CreateFreelancer.form';
+import Freelancer from './components/freelancers/freelancer/Freelancer';
 
 
 if (localStorage.token) {
@@ -42,7 +44,9 @@ const App = () => {
         <Route exact path='/register' component={Register} />
         <Route exact path='/forgotpassword' component={ForgotPassword} />
         <Route exact path='/freelancers' component={Freelancers} />
+        <Route exact path='/freelancers/:id' component={Freelancer} />
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
+        <PrivateRoute exact path='/createfreelancer' component={CreateFreelancer} />
     </section>
       </Switch>
     </>

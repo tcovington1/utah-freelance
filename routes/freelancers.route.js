@@ -2,6 +2,7 @@ const express = require('express')
 const {
   getFreelancers,
   getFreelancer,
+  getUserFreelancer,
   createFreelancer,
   updateFreelancer,
   deleteFreelancer,
@@ -30,7 +31,11 @@ router.use('/:freelancerId/reviews', reviewRouter)
 router
   .route('/')
   .get(advancedResults(Freelancer, 'services'), getFreelancers)
-  .post(protect, authorize('publisher', 'admin'), createFreelancer);
+  .post(protect, authorize('publisher', 'admin'), createFreelancer)
+
+  router.route('/me')
+  .get(protect, authorize('publisher', 'admin'), getUserFreelancer);
+
 
 //these need the id
 router
