@@ -65,12 +65,12 @@ const FreelancerSchema = new mongoose.Schema({
     required: true,
     //enum = these are the only available
     enum: [
-      'Junior Developer',
-      'Senior Developer',
+      'Developer',
+      'Software Developer',
       'Front-End Developer',
       'Back-End Developer',
       'Web Developer',
-      'Software Engineer',
+      'Artist',
       'Mobile Developer',
       'UI/UX',
       'Data Science',

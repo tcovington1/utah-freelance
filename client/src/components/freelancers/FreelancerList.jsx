@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getFreelancerList } from '../../redux/actions/freelancers.actions'
-import Freelancer from './Freelancer'
+import FreelancerItem from './FreelancerItem'
 
 // freelancer: {freelancers, loading}
 const Freelancers = ({ getFreelancerList, freelancerList }) => {
@@ -17,7 +17,7 @@ const Freelancers = ({ getFreelancerList, freelancerList }) => {
             <h1 style={{marginTop: '10rem'}}>{freelancer.name}</h1>)} */}
       { freelancerList.length > 0 ? (
         freelancerList.map( freelancer => (
-          <Freelancer key={freelancer._id} freelancer={freelancer} />
+          <FreelancerItem key={freelancer._id} freelancer={freelancer} />
           ))
           ) : <h4>No profiles were found...</h4> }
     </div>

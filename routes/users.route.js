@@ -2,7 +2,7 @@ const express = require('express')
 const {
   getUsers,
   getUser,
-  getUserFreelancer,
+  // getUserFreelancer,
   createUser,
   updateUser,
   deleteUser
@@ -29,7 +29,6 @@ router.use(authorize('admin'));
 router
   .route('/')
   .get(advancedResults(User), getUsers)
-  .get(getUserFreelancer)
   .post(createUser)
 
 router

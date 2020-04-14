@@ -99,21 +99,3 @@ exports.deleteUser = asyncHandler(async (req, res, next) => {
 
 // });
 
-exports.getUserFreelancer = async (req, res, next) => {
-  console.log('getting it now!')
-  // try {
-  //   const freelancer = await Freelancer.findOne({ user: req.user.id }).populate(
-  //     'user', 
-  //     ['firstName']
-  //     );
-
-  //   if(!freelancer) {
-  //     return res.status(400).json({ msg: 'There is no freelancer for this user'});
-  //   }
-  //   res.json(freelancer);
-
-  // } catch (error) {
-  //   console.error(error.message);
-  //   res.status(500).send("Server Error, see routes/api/profile.js")
-  // }
-};

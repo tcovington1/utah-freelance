@@ -6,7 +6,9 @@ import {
   LOGIN_FAIL,
   USER_LOADED,
   AUTH_ERROR,
-  LOGOUT
+  LOGOUT,
+  CLEAR_PROFILE,
+  PASSWORD_RESET
 } from './types.actions'
 import setAuthToken from '../utils/setAuthToken';
 
@@ -119,4 +121,24 @@ export const logout = () => async dispatch => {
   dispatch({
     type: LOGOUT
   })
+  dispatch({ type: CLEAR_PROFILE })
+}
+
+// Reset Password
+export const resetPassword = ({ email }) => async dispatch => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }
+
+  const body = JSON.stringify({
+    email
+  });
+  await axios.post('/auth/forgotpassword', config, body)
+
+  // dispatch({
+  //   type: LOGIN_SUCCESS,
+  //   payload: res.data
+  // })
 }
