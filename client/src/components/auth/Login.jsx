@@ -72,8 +72,10 @@ const Login = ({ login, isAuthenticated }) => {
             required  
             />
        
-        </div>    
+        </div>
+        <div className="cntr-btn">
           <button className='btn btn-multi_primary btn-lg center'>Log In</button>
+        </div>
       </form>
          <Link to='/forgotpassword' className='link_color-primary'>Forgot Password</Link>
         <p className="my-1 center">Don't have an account? <Link to='/register' className='link_color-primary'>Sign Up</Link></p>

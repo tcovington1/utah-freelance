@@ -5,6 +5,11 @@ import { setAlert } from '../../redux/actions/alerts.actions'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+//Icons
+import { Icon, InlineIcon } from '@iconify/react';
+import arrowRightBold from '@iconify/icons-mdi/arrow-right-bold';
+
+
 export const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -115,7 +120,10 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
             <option value="user">User</option>  
           </select>
         </div>
-          <button className='btn btn-multi_primary btn-lg'>Sign Up</button>
+        <div className="cntr-btn">
+          <button className='btn'>Get Started</button>
+          {/* <Icon icon={arrowRightBold} width='30' />< */}
+        </div>
       </form>
         <p className="my-1">Already have an account? <Link to='/login' className='link_color-primary'>Sign In</Link></p>
     </div>

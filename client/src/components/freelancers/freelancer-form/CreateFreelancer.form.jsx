@@ -115,9 +115,10 @@ const CreateFreelancer = ({ createFreelancer, history }) => {
         
         </Fragment>}
         </div> */}
-
-        <input type="submit" className='btn btn-primary my-1' />
-        <button className='btn btn-light my-1' ><Link to='/dashboard'>Go back</Link></button>
+        <div className="cntr-btn">
+          <input type="submit" className='btn btn-primary my-1' />
+          <button className='btn btn-light my-1' ><Link to='/dashboard' className='link_color-primary'>Go back</Link></button>
+        </div>
       </form>
     </>
   )
@@ -129,6 +130,6 @@ CreateFreelancer.propTypes = {
 }
 
                       //no mapStateToProps       //using withRouter here so we can use history                   
-export default connect(null, { createFreelancer })(withRouter(createFreelancer))
+export default connect(null, { createFreelancer })(withRouter(CreateFreelancer))
 
 // export default CreateFreelancer;

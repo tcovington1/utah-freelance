@@ -1,14 +1,14 @@
 .btn {
   
   display: inline-block;
-  background-color: $light-color;
-  color: $dark-color;
-  padding: 0.4rem 1.3rem; 
+  background-color: $primary-color;
+  color: $light-color;
+  padding: 1rem 10rem; 
   border-radius: .5rem;
   cursor: pointer;
   border: none;
   transform: all .2s;
-  // font-size: 1rem;
+  font-size: 1.75rem;
   margin: 2rem 1rem;
   outline: none;
   transition: all 0.2s ease-in;
@@ -22,3 +22,5 @@
       box-shadow: none ;
     }
   }
+
+  

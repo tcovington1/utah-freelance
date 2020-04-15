@@ -11,7 +11,7 @@ import {
 export const getFreelancerList = () => async dispatch => {
 
   try {
-    console.log('getting profiles')
+    // console.log('getting profiles')
     const res = await axios.get('/freelancers');
     // console.log(res)
     const freelancerList = res?.data?.data || []
@@ -58,8 +58,7 @@ export const getCurrentProfile = () => async dispatch => {
   try {
     const res = await axios.get('/freelancers/me');
     const profile = res?.data || []
-    console.log(profile)
-    debugger
+    // console.log(profile)
     dispatch({
       type: GET_PROFILE,
       profile

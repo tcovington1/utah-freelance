@@ -13,18 +13,19 @@ const Dashboard = ({ getCurrentProfile, auth: { isAuthenticated, authLoading, us
   }, [getCurrentProfile]);
 
   const { firstName, role } = user
-  console.log(profile)
+  
+  console.log(profile.length)
   return (
     <>
-     {profile === null && role === 'publisher' ? (
+     {profile.length === 0 && role === 'publisher' ? (
         <>
         <h1>Welcome {firstName}</h1>
         <h2>Let's setup a Freelancer profile</h2>
-        <button><Link to='/createfreelancer'>Create Profile</Link></button>
+        <button className='btn'><Link to='/createfreelancer' className='link_color-primary'>Create Profile</Link></button>
        </>
      ) 
      :
-      <Profile profile={profile}/>
+      <Profile profile={profile} user={user}/>
      }
       {role === 'admin' && (
         <>

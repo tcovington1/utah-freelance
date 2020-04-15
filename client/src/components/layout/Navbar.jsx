@@ -14,6 +14,12 @@ const Navbar = ({logout, auth: {isAuthenticated, loading}}) => {
   const authLinks = (
     <ul>
         <li>
+          <Link to='/freelancers'>Browse</Link>             
+        </li>
+        <li>
+          <Link to='/dashboard'>Profile</Link>             
+        </li>
+        <li>
           <Link onClick={logout}>Logout</Link>             
         </li>
 
@@ -35,9 +41,9 @@ const Navbar = ({logout, auth: {isAuthenticated, loading}}) => {
 
   return(
     <nav className='navbar'>
-      <h1 className='logo'>
+      <h3 className='logo'>
         <Link to='/'>Utah Freelance</Link>
-      </h1>
+      </h3>
       {!loading && isAuthenticated ? authLinks : guestLinks}
     </nav>
   )

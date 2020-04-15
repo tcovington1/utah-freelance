@@ -22,7 +22,7 @@ const Freelancer = ({ match, getFreelancerById, freelancer: {
       <p>Here is the freelancer your requested:</p>
         <h2>Name: {name}</h2>
         <h2>Bio: {bio}</h2>
-        <button className='btn'><Link to='/freelancers'>Back</Link></button>
+        <button className='btn'><Link to='/freelancers' className='link_color-primary' >Back</Link></button>
       </>
   )
 }
