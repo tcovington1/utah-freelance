@@ -9,17 +9,47 @@
   border: none;
   transform: all .2s;
   font-size: 1.75rem;
-  margin: 2rem 1rem;
+  // margin: 2rem 1rem;
   outline: none;
   transition: all 0.2s ease-in;
       transform: all .2s;
       box-shadow: 
-      1rem 1rem 2rem rgba(0, 0, 0, 0.1), 
-      -1rem -1rem 2rem rgba(255, 255, 255, 0.5);
+      1rem 1rem 2rem rgba(0, 0, 0, 0.1);
+      // -1rem -1rem 2rem rgba(255, 255, 255, 0.5);
 
   
     &.rm-box-shadow {
       box-shadow: none ;
+    }
+
+    &.btn-med {
+      font-size: 1rem;
+      padding: .7rem 2rem; 
+   
+      @media only screen and (max-width : $mob-width) {
+        font-size: 2rem;
+        padding: .7rem 4rem; 
+        width: 30rem;
+      }
+    }
+    &.btn-lg {
+      font-size: 1.5rem;
+      padding: .7rem 3rem; 
+        @media only screen and (max-width : $mob-width) {
+          font-size: 2rem;
+          padding: .7rem 6rem; 
+        }
+   
+    }
+
+    &.-light {
+
+    }
+    &.-primary {
+
+    }
+    &.-back {
+      background-color: lighten($primary-color, 15%);
     }
   }
 

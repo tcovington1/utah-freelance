@@ -1,32 +1,18 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState } from 'react'
 //withRouter lets us use the history.push from profile.actions.js
-import { Link, withRouter } from 'react-router-dom'
-import { createFreelancer } from '../../../redux/actions/freelancers.actions'
+import { Link } from 'react-router-dom'
+// import { createFreelancer } from '../../../redux/actions/freelancers.actions'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 const CreateFreelancer = ({ createFreelancer, history }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    bio: '',
-    website: '',
-    phone: '',
-    email: '',
-    address: '',
-    title: '',
-    
+    photo: ''
   });
 
-  // const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
   const { 
-    name,
-    bio,
-    website,
-    phone,
-    email,
-    address,
-    title
+   photo
    } = formData
 
    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -46,18 +32,7 @@ const CreateFreelancer = ({ createFreelancer, history }) => {
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className="form-group">
           <small className='form-text'>Give us an idea of your title.</small>
-          <select name="title" value={title} onChange={e => onChange(e)}>
-            <option value="0">* Select your Freelancer Title</option>
-            <option value="Developer">Developer</option>
-            <option value="Front-End Developer">Software Developer</option>
-            <option value="Front-End Developer">Front-End Developer</option>
-            <option value="Back-End Developer">Back-End Developer</option>
-            <option value="UI/UX">UI/UX</option>
-            <option value="Artist">Artist</option>
-            <option value="Marketing">Marketing</option>
-            <option value="Freelancer">Freelancer</option>
-            <option value="Other">Other</option>
-          </select>
+          <input type="file"/>
         </div>
         <div className="cntr-btn">
           <input type="submit" className='btn btn-primary my-1' />

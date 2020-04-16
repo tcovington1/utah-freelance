@@ -5,25 +5,35 @@ import { Link } from 'react-router-dom'
 // Redux
 import { getFreelancerById } from '../../../redux/actions/freelancers.actions'
 import { connect } from 'react-redux'
+import ProfileImg from '../../../assets/Taylor_Covington_mob.jpeg'
 
 const Freelancer = ({ match, getFreelancerById, freelancer: { 
   user,
   name,
-  bio, 
+  bio,
+  phone,
+  email 
  } }) => {
 
-  // console.log(match.param.id)
   useEffect(() => {
     getFreelancerById(match.params.id);
   }, [getFreelancerById, match.params.id])
-  console.log(name)
+
   return (
     <>
-      <p>Here is the freelancer your requested:</p>
-        <h2>Name: {name}</h2>
-        <h2>Bio: {bio}</h2>
-        <button className='btn'><Link to='/freelancers' className='link_color-primary' >Back</Link></button>
-      </>
+    <div className="cntr profile_main">
+    <img src={ProfileImg} alt="" className='round-img'/>
+
+    <h1 className="heading">{name}</h1>
+      <p>{bio}</p>
+      <p>{phone}</p>
+      <p>{email}</p>
+
+    </div>
+    <div className="cntr">
+      <button className='btn my-half'><Link to='/freelancers' className='link_color-primary' >Back</Link></button>
+    </div>
+    </>
   )
 }
 

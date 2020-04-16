@@ -22,6 +22,7 @@ import ForgotPassword from './components/auth/ForgotPassword'
 import PrivateRoute from './components/auth/PrivateRoute'
 import CreateFreelancer from './components/freelancers/freelancer-form/CreateFreelancer.form';
 import Freelancer from './components/freelancers/freelancer/Freelancer';
+import EditFreelancerForm from './components/freelancers/freelancer-form/EditFreelancer.form';
 
 
 if (localStorage.token) {
@@ -47,6 +48,7 @@ const App = () => {
         <Route exact path='/freelancers/:id' component={Freelancer} />
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
         <PrivateRoute exact path='/createfreelancer' component={CreateFreelancer} />
+        <PrivateRoute exact path='/editfreelancer/:id' component={EditFreelancerForm} />
     </section>
       </Switch>
     </>

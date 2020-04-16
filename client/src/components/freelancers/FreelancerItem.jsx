@@ -9,10 +9,10 @@ const Freelancer = ({ freelancer: {
   bio, 
  } }) => {
   return (
-    <div>
-        <h2>{name}</h2>
-        <h2>{bio}</h2>
-        <Link to={`/freelancers/${_id}`} className='btn'>View Profile</Link>
+    <div className='my-1'>
+        <h2 className='heading_main'>{name}</h2>
+        <p>{bio}</p>
+        <Link to={`/freelancers/${_id}`} className='btn' style={{marginTop: '1rem'}}>View Profile</Link>
       </div>
 
   )

@@ -1,11 +1,11 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState, useEffect } from 'react'
 //withRouter lets us use the history.push from profile.actions.js
 import { Link, withRouter } from 'react-router-dom'
-import { createFreelancer } from '../../../redux/actions/freelancers.actions'
+import { editFreelancer, getCurrentProfile } from '../../../redux/actions/freelancers.actions'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-const CreateFreelancer = ({ createFreelancer, history }) => {
+const EditFreelancer = ({ editFreelancer, getCurrentProfile , profile , history }) => {
   const [formData, setFormData] = useState({
     name: '',
     bio: '',
@@ -17,7 +17,21 @@ const CreateFreelancer = ({ createFreelancer, history }) => {
     
   });
 
+  useEffect(() => {
+    getCurrentProfile();
+
   // const [displaySocialInputs, toggleSocialInputs] = useState(false);
+
+  setFormData({
+    name: profile.loading || !profile.name ? '' : profile.name,
+    bio: profile.loading || !profile.bio ? '' : profile.bio,
+    website: profile.loading || !profile.website ? '' : profile.website,
+    phone: profile.loading || !profile.phone ? '' : profile.phone,
+    email: profile.loading || !profile.email ? '' : profile.email,
+    address: profile.loading || !profile.address ? '' : profile.address,
+    title: profile.loading || !profile.title ? '' : profile.title,
+  });
+}, [profile.loading, getCurrentProfile]);
 
   const { 
     name,
@@ -33,7 +47,7 @@ const CreateFreelancer = ({ createFreelancer, history }) => {
 
    const onSubmit = e => {
      e.preventDefault();
-     createFreelancer(formData, history);
+     editFreelancer(formData, history, profile.id);
    }
    
   return (
@@ -115,21 +129,26 @@ const CreateFreelancer = ({ createFreelancer, history }) => {
         
         </Fragment>}
         </div> */}
-        <div className="cntr">
+        <div className="cntr-btn">
           <input type="submit" className='btn btn-primary my-1' />
-          <button className='btn btn-back' ><Link to='/dashboard' className='link_color-primary'>Go back</Link></button>
+          <button className='btn btn-light my-1' ><Link to='/dashboard' className='link_color-primary'>Go back</Link></button>
         </div>
       </form>
     </>
   )
 }
 
-CreateFreelancer.propTypes = {
+EditFreelancer.propTypes = {
   //ptfr
-  createFreelancer: PropTypes.func.isRequired,
+  editFreelancer: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
 }
 
-                      //no mapStateToProps       //using withRouter here so we can use history                   
-export default connect(null, { createFreelancer })(withRouter(CreateFreelancer))
+const mapStateToProps = state => ({
+  profile: state?.freelancer?.profile || []
+})
+
+                             //using withRouter here so we can use history                   
+export default connect(mapStateToProps, { editFreelancer, getCurrentProfile })(withRouter(EditFreelancer))
 
 // export default CreateFreelancer;

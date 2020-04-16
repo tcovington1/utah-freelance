@@ -1,8 +1,11 @@
 import axios from 'axios';
+import setAlert from '../../components/layout/Alert'
+
 import {
   UPDATE_FREELANCER_LIST,
   GET_FREELANCER,
   GET_PROFILE,
+  UPDATE_PROFILE,
   CLEAR_PROFILE,
   FREELANCER_ERROR
 } from './types.actions'
@@ -90,7 +93,7 @@ export const createFreelancer = (formData, history, edit = false) => async dispa
       payload: res.data
     });
 
-    // dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success'));
+    dispatch(setAlert('Profile Created', 'success'));
 
     // if(!edit) {
       history.push('/dashboard')
@@ -99,7 +102,7 @@ export const createFreelancer = (formData, history, edit = false) => async dispa
     const errors = err.response.data.errors;
 
     if(errors) {
-      // errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
     }
 
     dispatch({
@@ -111,3 +114,44 @@ export const createFreelancer = (formData, history, edit = false) => async dispa
 
   }
 };
+export const editFreelancer = (formData, history, id) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    const res = await axios.put(`/freelancers/${id}`, formData, config);
+    const profile = res?.data || []
+
+
+    dispatch({
+      type: UPDATE_PROFILE,
+      profile
+    });
+
+    dispatch(setAlert('Profile Updated', 'success'));
+
+    // if(!edit) {
+      history.push('/dashboard')
+    // }
+  } catch (err) {
+    console.log(err)
+    // const errors = err.response.data.errors;
+
+    // if(errors) {
+    //   errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
+    // }
+
+    dispatch({
+      type: FREELANCER_ERROR,
+      // payload: {
+      //   msg: err.response.statusText, status: err.response.status
+      // }
+    });
+
+  }
+};
+
+// Add a photo

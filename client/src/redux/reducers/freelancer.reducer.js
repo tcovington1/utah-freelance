@@ -1,4 +1,11 @@
-import { GET_FREELANCER, GET_PROFILE, CLEAR_PROFILE, FREELANCER_ERROR, UPDATE_FREELANCER_LIST} from "../actions/types.actions";
+import { 
+  GET_FREELANCER, 
+  GET_PROFILE,
+  UPDATE_PROFILE, 
+  CLEAR_PROFILE, 
+  FREELANCER_ERROR, 
+  UPDATE_FREELANCER_LIST
+} from "../actions/types.actions";
 
 const initialState = {
   freelancer: null,
@@ -25,6 +32,7 @@ export default function(state = initialState, action) {
         loading: false
       }
       case GET_PROFILE:
+      case  UPDATE_PROFILE:
         return {
           ...state,
           profile,
