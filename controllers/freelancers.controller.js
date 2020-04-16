@@ -123,9 +123,9 @@ exports.deleteFreelancer = asyncHandler(async (req, res, next) => {
 
 });
 
-// @desc Upload photo for freelancer
-// @route PUT /api/v1/freelancers/:id/photo
-// @access Private (need a token)
+//* @desc Upload photo for freelancer
+//* @route PUT /api/v1/freelancers/:id/photo
+//* @access Private (need a token)
 exports.freelancerPhotoUpload = asyncHandler(async (req, res, next) => {
   // whatever we want to do go here
 
@@ -177,6 +177,11 @@ exports.freelancerPhotoUpload = asyncHandler(async (req, res, next) => {
     data: file.name
   });
 });
+
+
+//*Get the users freelancer profile
+//* @route GET /api/v1/freelancers/me
+//* @access Private (need a token)
 
 exports.getUserFreelancer = async (req, res, next) => {
   console.log('getting it now!')

@@ -55,8 +55,8 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
       <h1 className="large text-primary">Lets start, </h1>
       {/* <p className="lead"><Icon icon={accountIcon} />Create Your Account</p> */}
       <div className="test-login">
-        <p>If you'd like to test the site, click <Link to='/login' className='link_color-primary'>here</Link></p>
-        
+        {/* <p>If you'd like to test the site, click <Link to='/login' className='link_color-primary'>here</Link></p> */}
+        <p>Create your user profile.</p>
       </div>
       
       <form className='form' onSubmit={onSubmit} >
@@ -115,9 +115,9 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
         </div>
         <div className="form-group">
         <select name="role" value={role} onChange={e => onChange(e)}>
-            <option value="0">* Select a Role</option>
-            <option value="publisher">Publisher</option>
-            <option value="user">User</option>  
+            <option value="0">* Please Select One</option>
+            <option value="publisher">I want to setup a freelancer profile.</option>
+            <option value="user">I want to create an account to write reviews.</option>  
           </select>
         </div>
         <div className="cntr-btn">

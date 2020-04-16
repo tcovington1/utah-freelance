@@ -10,17 +10,15 @@ const Freelancers = ({ getFreelancerList, freelancerList }) => {
     getFreelancerList();
   }, []);
   return (
-    <div>
-    {console.log(freelancerList)}
-    
-     {/* {freelancers.map( freelancer => 
-            <h1 style={{marginTop: '10rem'}}>{freelancer.name}</h1>)} */}
+    <>
+    <div className="cntr">
       { freelancerList.length > 0 ? (
         freelancerList.map( freelancer => (
-          <FreelancerItem key={freelancer._id} freelancer={freelancer} />
-          ))
-          ) : <h4>No profiles were found...</h4> }
+        <FreelancerItem key={freelancer._id} freelancer={freelancer} />
+      ))
+      ) : <h4>No profiles were found...</h4> }
     </div>
+    </>
   )
 }
 

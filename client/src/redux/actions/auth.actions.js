@@ -1,4 +1,6 @@
 import axios from 'axios';
+import setAlert from '../../components/layout/Alert'
+
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -105,10 +107,12 @@ export const login = (
     const errors = error.response.data.errors;
 
     if (errors) {
-      errors.forEach(error => console.log(error))
+      errors.forEach(error => setAlert('Login Failed', 'error'))
     }
     dispatch({
-      type: LOGIN_FAIL
+      type: LOGIN_FAIL,
+      
+
     })
   }
 }

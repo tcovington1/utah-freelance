@@ -17,9 +17,31 @@
 // Abstracts
 @import './abstracts/functions';
 @import './abstracts/mixins';
+@import './abstracts/typography';
+
 // @import './abstracts/config';
 
 
 .logo {
   color: #fff;
+}
+
+// Profile
+
+.profile {
+
+  &_main{
+    background-color: $primary-color;
+    height: 65vh;
+    padding: 2rem;
+    color: white;
+    border-radius: 0px 0px 3rem 3rem;
+    box-shadow: 12px 4px 4px rgbx(0, 0, 0, 0.8);
+  }
+
+  &_reviews {
+    
+  }
+
+
 }
