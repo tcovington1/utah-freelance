@@ -6,17 +6,17 @@ import {
   GET_FREELANCER,
   GET_PROFILE,
   UPDATE_PROFILE,
+  DELETE_PROFILE,
   CLEAR_PROFILE,
   FREELANCER_ERROR
 } from './types.actions'
 
-// Get all freelancers
+//* Get all freelancers
 export const getFreelancerList = () => async dispatch => {
-
   try {
-    // console.log('getting profiles')
+    // API call to back-end to get data
     const res = await axios.get('/freelancers');
-    // console.log(res)
+    // storing data we receive in a variable to use
     const freelancerList = res?.data?.data || []
 
     dispatch({
@@ -32,14 +32,15 @@ export const getFreelancerList = () => async dispatch => {
     })
   }
 }
-// GET freelancer by ID
+
+//* GET freelancer by ID
 export const getFreelancerById = freelancerId => async dispatch => {
   //prevent flashing of past user profile
   try {
-    console.log('getting freelancer')
+    // Getting freelncer by ID being passed in from component
     const res = await axios.get(`/freelancers/${freelancerId}`);
+    // Storing freelancer data received in a variable to use
     const freelancer = res?.data?.data || []
-    // debugger
 
     dispatch({
       type: GET_FREELANCER,
@@ -55,8 +56,7 @@ export const getFreelancerById = freelancerId => async dispatch => {
   }
 };
 
-// Get users Freelancer profile
-
+//* Get users Freelancer profile
 export const getCurrentProfile = () => async dispatch => {
   try {
     const res = await axios.get('/freelancers/me');
@@ -76,8 +76,7 @@ export const getCurrentProfile = () => async dispatch => {
   }
 };
 
-// Create a freelancer
-
+//* Create a freelancer
 export const createFreelancer = (formData, history, edit = false) => async dispatch => {
   try {
     const config = {
@@ -99,16 +98,17 @@ export const createFreelancer = (formData, history, edit = false) => async dispa
       history.push('/dashboard')
     // }
   } catch (err) {
-    const errors = err.response.data.errors;
+    console.log('createFreelancer Error:', err)
+    // const errors = err.response.data.errors;
 
-    if(errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
-    }
+    // if(errors) {
+    //   errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
+    // }
 
     dispatch({
       type: FREELANCER_ERROR,
       payload: {
-        msg: err.response.statusText, status: err.response.status
+        // msg: err.response.statusText, status: err.response.status
       }
     });
 
@@ -146,12 +146,41 @@ export const editFreelancer = (formData, history, id) => async dispatch => {
 
     dispatch({
       type: FREELANCER_ERROR,
-      // payload: {
-      //   msg: err.response.statusText, status: err.response.status
-      // }
+      payload: {
+        msg: err, status: err
+      }
     });
 
   }
 };
 
 // Add a photo
+
+// Delete Freelancer profile
+export const deleteFreelancer = (id) => async dispatch => {
+  if(window.confirm('Are you sure you want to delete your profile?')){    
+    try {
+      console.log('Hit delete try')
+      console.log(id)
+     await axios.delete(`freelancers/${id}`);
+  
+      dispatch({
+        type: CLEAR_PROFILE,
+      });
+      dispatch({
+        type: DELETE_PROFILE,
+      });
+  
+      dispatch(setAlert('Your account has been deleted'));
+  
+    } catch (err) {
+      console.log(err)
+      dispatch({
+        type: FREELANCER_ERROR,
+        payload: {
+          // msg: err.response.statusText, status: err.response.status
+        }
+      });
+    }
+  }
+};

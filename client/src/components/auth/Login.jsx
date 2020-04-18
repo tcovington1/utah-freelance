@@ -73,8 +73,8 @@ const Login = ({ login, isAuthenticated }) => {
             />
        
         </div>
-        <div className="cntr-btn">
-          <button className='btn btn-multi_primary btn-lg center'>Log In</button>
+        <div className="cntr">
+          <button className='btn btn-primary btn-med center'>Log In</button>
         </div>
       </form>
          <Link to='/forgotpassword' className='link_color-primary'>Forgot Password</Link>

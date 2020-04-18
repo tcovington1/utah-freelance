@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 //withRouter lets us use the history.push from profile.actions.js
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter, Redirect } from 'react-router-dom'
 import { editFreelancer, getCurrentProfile } from '../../../redux/actions/freelancers.actions'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -48,12 +48,13 @@ const EditFreelancer = ({ editFreelancer, getCurrentProfile , profile , history 
    const onSubmit = e => {
      e.preventDefault();
      editFreelancer(formData, history, profile.id);
+     return <Redirect to='/dashboard' />
    }
    
   return (
     <>
       <h1 className="large text-primary center">
-       Create Your Freelancer Profile
+       Edit Your Freelancer Profile
       </h1> 
       <p className="lead center">Let's get some information to make your profile stand out</p>
       <small>* = required fields</small>
@@ -129,9 +130,9 @@ const EditFreelancer = ({ editFreelancer, getCurrentProfile , profile , history 
         
         </Fragment>}
         </div> */}
-        <div className="cntr-btn">
-          <input type="submit" className='btn btn-primary my-1' />
-          <button className='btn btn-light my-1' ><Link to='/dashboard' className='link_color-primary'>Go back</Link></button>
+        <div className="cntr">
+          <input type="submit" className='btn btn-primary btn-med my-1' />
+          <button className='btn btn-light btn-med my-1' ><Link to='/dashboard' className='link_color-primary'>Go back</Link></button>
         </div>
       </form>
     </>

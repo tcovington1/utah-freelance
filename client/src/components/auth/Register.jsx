@@ -120,8 +120,8 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
             <option value="user">I want to create an account to write reviews.</option>  
           </select>
         </div>
-        <div className="cntr-btn">
-          <button className='btn'>Get Started</button>
+        <div className="cntr">
+          <button className='btn btn-primary'>Get Started</button>
           {/* <Icon icon={arrowRightBold} width='30' />< */}
         </div>
       </form>
