@@ -1,32 +1,51 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, {useState, useEffect} from 'react'
+import { Link, Redirect } from 'react-router-dom'
 import ProfileImg from '../../assets/Taylor_Covington_mob.jpeg'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
-const Profile = ({profile, user}) => {
-  console.log(profile)
+// Redux
+import { connect } from 'react-redux'
+import { deleteFreelancer } from '../../redux/actions/freelancers.actions';
 
-const fullName = user.firstName + ' ' + user.lastName
+const Profile = ({deleteFreelancer, profile, user}) => {
+  const [isToggle, setIsToggle] = useState(false);
 
-const {name, bio, website, phone, email, address} = profile;
+  const fullName = user.firstName + ' ' + user.lastName
+
+  const { name, bio, website, phone, email, address} = profile;
+
+  const deleteAcct = () => {
+    //deleteFreelancer comes from freelancer.actions redux
+    deleteFreelancer(profile.id);
+    return <Redirect to='/dashboard' />
+  }
 
   return (
     <>
     <div className="cntr profile_main">
       <img src={ProfileImg} alt="" className='round-img'/>
       <h1 className='heading'>Hi {user.firstName},</h1>
-
+      {/* <h2>ID: {_id}</h2> */}
       <h2>{name}</h2>
       <p>{bio}</p>
       <p>{website}</p>
       <p>{phone}</p>
       <p>{email}</p>
     </div>
-      <div className="cntr">
-        <Link to={`/editfreelancer/${profile.id}`} className="btn btn-med my-half">Edit Freelancer Profile</Link>
-        <Link to='/addphoto' className="btn btn-med my-half">Add a Photo</Link>
-        <Link to='/addphoto' className="btn btn-med my-half">Add Services</Link>
-      </div>
+    <div className="cntr">
+
+    { !isToggle ?  <span className="btn btn-med btn-primary my-half" onClick={() => setIsToggle(!isToggle)}>More Options</span> 
+    : (
+      <>
+       <Link className="btn btn-med btn-primary my-half" onClick={() => setIsToggle(!isToggle)}>Less Options</Link>
+       <Link to={`/editfreelancer/${profile.id}`} className="btn btn-med btn-primary my-half">Edit Freelancer Profile</Link>
+       <Link to='/addphoto' className="btn btn-med btn-primary my-half">Add a Photo</Link>
+       <Link to='/addphoto' className="btn btn-med btn-light my-half">Add Services</Link>
+       <button className="btn btn-med btn-delete my-half" onClick={deleteAcct}>Delete Freelancer</button>
+       </>
+       )}
+     
+       </div>
       <hr/>
       <div className="cntr profile_reviews">
         <p className="heading_sub">Here's what people are saying:</p>
@@ -36,8 +55,8 @@ const {name, bio, website, phone, email, address} = profile;
   )
 }
 
-// Profile.propTypes = {
+Profile.propTypes = {
+  deleteFreelancer: PropTypes.func.isRequired,
+}
 
-// }
-
-export default Profile
+export default connect(null, { deleteFreelancer })(Profile)

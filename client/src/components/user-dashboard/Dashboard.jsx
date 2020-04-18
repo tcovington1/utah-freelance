@@ -23,7 +23,7 @@ const Dashboard = ({ getCurrentProfile, auth: { isAuthenticated, authLoading, us
           <div className='cntr-middle_box'>
             <h1 className='heading_main'>Welcome {firstName}</h1>
             <h2>Let's setup a Freelancer profile</h2>
-            <button className='btn'><Link to='/createfreelancer' className='link_color-primary'>Create Profile</Link></button>
+            <Link to='/createfreelancer' className='btn btn-primary btn-med link_color-primary my-1'>Create Profile</Link>
           </div>
         </div>
        </>

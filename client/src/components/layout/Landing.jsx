@@ -11,7 +11,7 @@ const Landing = () => {
           {/* style={{color: 'black'}} */}
           <p className="lead" >We connect you to Utah Freelancers.</p>
           <div className="buttons">
-            <Link to='/freelancers' className="btn btn-med my-1 ">Browse Freelancers</Link>
+            <Link to='/freelancers' className="btn btn-primary btn-med my-1 ">Browse Freelancers</Link>
             <Link to='/login' className="btn btn-med btn-light my-half">Register As Freelancer</Link>
           </div>
           <p className="my-1" >Already have an account? <Link to='/login' className='link'>Sign In</Link></p>
