@@ -9,6 +9,7 @@
 @import './components/navbar';
 @import './components/form';
 @import './components/button';
+@import './components/card';
 
 // // Base
 // @import './base/animations';
@@ -31,16 +32,46 @@
 .profile {
 
   &_main{
-    background-color: $primary-color;
-    height: 65vh;
+    position: relative
+  }
+  &_heading {
+    
+    border-radius: 3rem 3rem 0 0;
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    background-color: #2C3E50;
+    
+  }
+  &_box-pic {
+    width: 28%;
+  }
+  &_box-data {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #ffff;
+    padding-bottom: 1rem;
+    padding-left: 3rem
+  }
+  &_body {
     padding: 2rem;
-    color: white;
-    border-radius: 0px 0px 3rem 3rem;
+    margin-top: 0.5rem;
     box-shadow: 12px 4px 4px rgbx(0, 0, 0, 0.8);
+    
+    &-content {
+      color: #5C4B51;
+      padding-top: 5rem;
+    }
   }
 
   &_reviews {
-    
+    width: 95%;
+
+    &-author {
+      margin-top: 1rem;
+    }
   }
 
 

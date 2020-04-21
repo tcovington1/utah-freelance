@@ -6,6 +6,7 @@ import './styles/main.scss';
 // Redux
 import store from './redux/store.redux'
 import { loadUser } from './redux/actions/auth.actions'
+// import { getCurrentProfile } from './redux/actions/freelancers.actions'
 import setAuthToken from './redux/utils/setAuthToken'
 
 // Components
@@ -23,6 +24,7 @@ import PrivateRoute from './components/auth/PrivateRoute'
 import CreateFreelancer from './components/freelancers/freelancer-form/CreateFreelancer.form';
 import Freelancer from './components/freelancers/freelancer/Freelancer';
 import EditFreelancerForm from './components/freelancers/freelancer-form/EditFreelancer.form';
+import AddPhoto from './components/freelancers/freelancer-form/AddPhoto.form';
 
 
 if (localStorage.token) {
@@ -49,6 +51,7 @@ const App = () => {
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
         <PrivateRoute exact path='/createfreelancer' component={CreateFreelancer} />
         <PrivateRoute exact path='/editfreelancer/:id' component={EditFreelancerForm} />
+        <PrivateRoute exact path='/freelancers/:id/addphoto' component={AddPhoto} />
     </section>
       </Switch>
     </>

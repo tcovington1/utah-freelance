@@ -68,11 +68,12 @@ export const register = ({
 
     dispatch(loadUser());
   } catch (error) {
-    const errors = error.response.data.errors;
+    console.log(error)
+    // const errors = error.response.data.errors;
 
-    if (errors) {
-      errors.forEach(error => console.log(error))
-    }
+    // if (errors) {
+    //   errors.forEach(error => console.log(error))
+    // }
     dispatch({
       type: REGISTER_FAIL
     })

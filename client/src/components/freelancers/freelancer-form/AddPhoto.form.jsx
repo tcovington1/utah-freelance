@@ -1,40 +1,51 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 //withRouter lets us use the history.push from profile.actions.js
 import { Link } from 'react-router-dom'
-// import { createFreelancer } from '../../../redux/actions/freelancers.actions'
+import { addPhoto, getCurrentProfile } from '../../../redux/actions/freelancers.actions'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-const CreateFreelancer = ({ createFreelancer, history }) => {
-  const [formData, setFormData] = useState({
+const AddPhoto = ({ addPhoto, getCurrentProfile, profile }) => {
+  const [file, setFile] = useState({
     photo: ''
   });
-
+  const [filename, setFilename] = useState('Choose File');
 
   const { 
    photo
-   } = formData
+   } = file
 
-   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
+   useEffect(() => {
+     getCurrentProfile();
+   }, [getCurrentProfile])
+
+   const onChange = e => {
+     console.log(e.target.files[0])
+     setFile(e.target.files[0])
+     setFilename(e.target.files[0].name)
+
+   }
+  //  console.log(profile)
 
    const onSubmit = e => {
      e.preventDefault();
-     createFreelancer(formData, history);
+     addPhoto(file, profile.id );
    }
    
   return (
     <>
       <h1 className="large text-primary center">
-       Create Your Freelancer Profile
+       Add A Photo
       </h1> 
-      <p className="lead center">Let's get some information to make your profile stand out</p>
-      <small>* = required fields</small>
+      <p className="lead center">Let's add a photo to your freelancer profile.</p>
+      {/* <small>* = required fields</small> */}
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className="form-group">
-          <small className='form-text'>Give us an idea of your title.</small>
-          <input type="file"/>
+          {/* <small className='form-text'>Give us an idea of your title.</small> */}
+          <input type="file" value={photo} onChange={e => onChange(e)}/>
+          <label htmlFor="photo">{filename}</label>
         </div>
-        <div className="cntr-btn">
+        <div className="cntr">
           <input type="submit" className='btn btn-primary my-1' />
           <button className='btn btn-light my-1' ><Link to='/dashboard' className='link_color-primary'>Go back</Link></button>
         </div>
@@ -43,12 +54,17 @@ const CreateFreelancer = ({ createFreelancer, history }) => {
   )
 }
 
-CreateFreelancer.propTypes = {
+AddPhoto.propTypes = {
   //ptfr
-  createFreelancer: PropTypes.func.isRequired,
+  addPhoto: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
 }
 
-                      //no mapStateToProps       //using withRouter here so we can use history                   
-export default connect(null, { createFreelancer })(withRouter(CreateFreelancer))
+const mapStateToProps = state => ({
+  profile: state?.freelancer?.profile || []
+})
 
-// export default CreateFreelancer;
+                      //no mapStateToProps       //using withRouter here so we can use history                   
+export default connect(mapStateToProps, { addPhoto, getCurrentProfile })(AddPhoto)
+
+// export default AddPhoto;

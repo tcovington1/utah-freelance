@@ -117,7 +117,7 @@ const CreateFreelancer = ({ createFreelancer, history }) => {
         </div> */}
         <div className="cntr">
           <input type="submit" className='btn btn-primary my-1' />
-          <button className='btn btn-back' ><Link to='/dashboard' className='link_color-primary'>Go back</Link></button>
+          <Link to='/dashboard' className='btn btn-primary_inverted'>Go back</Link>
         </div>
       </form>
     </>

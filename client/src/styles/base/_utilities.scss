@@ -49,8 +49,9 @@
 
 //img
 .round-img {
-  width: 50%;
+  width: 13rem;
   clip-path: circle(50% at 50% 50%);
+  margin: 2px
 
   &_post {
     width: 65%;
@@ -128,14 +129,19 @@
 .cntr-middle {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+
   &_box {
-    // position: absolute;
-    top: -40%;
+    position: absolute;
+    top: 9%;
     // left: -50%;
     // transform: translate(-50%, -50%);
     text-align: center;
   }
+}
+
+.text-box {
+
 }
 
 // Links

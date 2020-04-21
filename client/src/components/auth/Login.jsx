@@ -77,8 +77,8 @@ const Login = ({ login, isAuthenticated }) => {
           <button className='btn btn-primary btn-med center'>Log In</button>
         </div>
       </form>
-         <Link to='/forgotpassword' className='link_color-primary'>Forgot Password</Link>
-        <p className="my-1 center">Don't have an account? <Link to='/register' className='link_color-primary'>Sign Up</Link></p>
+         <Link to='/forgotpassword' className='link_primary'>Forgot Password</Link>
+        <p className="my-1 center">Don't have an account? <Link to='/register' className='link_primary'>Sign Up</Link></p>
       {/* </div> */}
     </div>
     </>

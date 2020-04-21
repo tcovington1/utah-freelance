@@ -1,4 +1,4 @@
-
+@import '../abstracts/variables';
 
 .heading {
   font-family: 'Rubik', sans-serif;
@@ -8,5 +8,16 @@
   }
   &_sub{
     font-size: 2rem;
+  }
+  &_welcome{
+    font-size: 4rem
+  }
+  &__primary {
+    color: $primary-color
+  }
+  &_review {
+    font-size: 1.7rem;
+    font-weight: 500;
+
   }
 }
