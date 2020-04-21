@@ -1,0 +1,25 @@
+@import '../abstracts/variables';
+
+.card {
+  background: #FFFFFF;
+  box-shadow: 0px 12px 42px rgba(100, 91, 171, 0.668025);
+  border-radius: 25px;
+  padding: 2rem;
+  height: 100%;
+
+  &_top {
+    height: 20%;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  }
+  &_body {
+    height: 40%;
+
+  }
+  &_review {
+  margin: .5rem;
+  padding: 1rem;
+  box-shadow: 0px 28px 30px #E9ECF9;
+  border-radius: 5px; 
+
+  }
+}

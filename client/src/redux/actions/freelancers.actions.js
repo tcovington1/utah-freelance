@@ -155,13 +155,33 @@ export const editFreelancer = (formData, history, id) => async dispatch => {
 };
 
 // Add a photo
+export const addPhoto = (file, id) => async dispatch => {
+  try {
+    // const res = await axios.put(`/freelancers/${id}/photo`);
+     await axios.put(`/freelancers/${id}/photo`, file);
+  
+    // dispatch({
+    //   type: ADD_PHOTO,
+    //   payload: res.data
+    // });
+    
+  } catch (error) {
+    console.log(error)
+    dispatch({
+      type: FREELANCER_ERROR,
+      payload: {
+        // msg: err.response.statusText, status: err.response.status
+      }
+    });
+  }
+
+}
+
 
 // Delete Freelancer profile
 export const deleteFreelancer = (id) => async dispatch => {
   if(window.confirm('Are you sure you want to delete your profile?')){    
     try {
-      console.log('Hit delete try')
-      console.log(id)
      await axios.delete(`freelancers/${id}`);
   
       dispatch({

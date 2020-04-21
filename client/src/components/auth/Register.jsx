@@ -121,11 +121,11 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
           </select>
         </div>
         <div className="cntr">
-          <button className='btn btn-primary'>Get Started</button>
+          <button className='btn btn-primary btn-med'>Get Started</button>
           {/* <Icon icon={arrowRightBold} width='30' />< */}
         </div>
       </form>
-        <p className="my-1">Already have an account? <Link to='/login' className='link_color-primary'>Sign In</Link></p>
+        <p className="my-1">Already have an account? <Link to='/login' className='link_primary'>Sign In</Link></p>
     </div>
     </>
   )

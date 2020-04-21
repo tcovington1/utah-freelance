@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { getCurrentProfile } from '../../redux/actions/freelancers.actions'
 import { Link, withRouter } from 'react-router-dom'
 import Profile from './Profile';
+import SetupProfile from './SetupProfile'
 
 // loadUser
 const Dashboard = ({ getCurrentProfile, auth: { isAuthenticated, authLoading, user }, profile}) => {
@@ -19,13 +20,7 @@ const Dashboard = ({ getCurrentProfile, auth: { isAuthenticated, authLoading, us
     <>
      {profile.length === 0 && role === 'publisher' ? (
         <>
-        <div className="cntr-middle">
-          <div className='cntr-middle_box'>
-            <h1 className='heading_main'>Welcome {firstName}</h1>
-            <h2>Let's setup a Freelancer profile</h2>
-            <Link to='/createfreelancer' className='btn btn-primary btn-med link_color-primary my-1'>Create Profile</Link>
-          </div>
-        </div>
+        <SetupProfile name={firstName}/>
        </>
      ) 
      :

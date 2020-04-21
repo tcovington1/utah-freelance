@@ -139,6 +139,8 @@ exports.freelancerPhotoUpload = asyncHandler(async (req, res, next) => {
     if(freelancer.user.toString() !== req.user.id && req.user.role !== 'admin') {
       return next(new ErrorResponse(`User ${req.params.id} is not authorized to update this freelacer profile`, 401));
     }  
+    // what is the req.files coming back as? right now undefined
+    console.log('file: ', req.files)
 
   //this will use the middle created in model to cascade delete services
   if (!req.files) {

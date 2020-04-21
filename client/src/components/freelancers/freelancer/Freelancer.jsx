@@ -1,37 +1,66 @@
 import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import NoPhoto from '../../../assets/Taylor_Covington_mob.jpeg'
 
 // Redux
 import { getFreelancerById } from '../../../redux/actions/freelancers.actions'
 import { connect } from 'react-redux'
-import ProfileImg from '../../../assets/Taylor_Covington_mob.jpeg'
+
+// Icons
+import { Icon, InlineIcon } from '@iconify/react';
+import starIcon from '@iconify/icons-mdi/star';
+
 
 const Freelancer = ({ match, getFreelancerById, freelancer: { 
   user,
   name,
   bio,
   phone,
-  email 
+  email,
+  website,
+  photo 
  } }) => {
 
   useEffect(() => {
     getFreelancerById(match.params.id);
   }, [getFreelancerById, match.params.id])
 
+  console.log(name)
+
   return (
     <>
     <div className="cntr profile_main">
-    <img src={ProfileImg} alt="" className='round-img'/>
+      <div className="profile_heading">
+        <div className="profile_box-pic">
+          {photo === 'no-photo.png' ? <img src={NoPhoto} alt="" className='round-img' style={{position: 'absolute', left: '10px', top: '30px'}}/>
+            :
+            <img src={photo} alt="" className='round-img' style={{position: 'absolute', left: '10px', top: '30px'}}/>
+          }
+        </div>
+      <div className="profile_box-data">
+        <h1 className="heading-main">{name}</h1>
+      </div>
+      </div>
+      <div className="profile_body">
+        <div className="profile_body-content">
+          <h3>{bio}</h3>
+          <h3>{website}</h3>
+          <h3>{phone}</h3>
+          <h3>{email}</h3>
+          <div className="profile-rating">
+          <InlineIcon icon={starIcon} color="#F49D1E" width='4rem'/>
+          <InlineIcon icon={starIcon} color="#F49D1E" width='4rem'/>
+          <InlineIcon icon={starIcon} color="#F49D1E" width='4rem'/>
+          <InlineIcon icon={starIcon} color="#F49D1E" width='4rem'/>
+          </div>
 
-    <h1 className="heading">{name}</h1>
-      <p>{bio}</p>
-      <p>{phone}</p>
-      <p>{email}</p>
+        </div>
+      </div>
 
     </div>
     <div className="cntr">
-      <button className='btn my-half'><Link to='/freelancers' className='link_color-primary' >Back</Link></button>
+      <Link to='/freelancers' className=' btn btn-primary_inverted btn-med my-half' >Back</Link>
     </div>
     </>
   )
