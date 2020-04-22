@@ -5,6 +5,7 @@ import {
   UPDATE_FREELANCER_LIST,
   GET_FREELANCER,
   GET_PROFILE,
+  ADD_PHOTO,
   UPDATE_PROFILE,
   DELETE_PROFILE,
   CLEAR_PROFILE,
@@ -155,15 +156,16 @@ export const editFreelancer = (formData, history, id) => async dispatch => {
 };
 
 // Add a photo
-export const addPhoto = (file, id) => async dispatch => {
+export const addPhoto = (formData, id, history) => async dispatch => {
   try {
-    // const res = await axios.put(`/freelancers/${id}/photo`);
-     await axios.put(`/freelancers/${id}/photo`, file);
+    const res = await axios.put(`/freelancers/${id}/photo`, formData);
+    //  await axios.put(`/freelancers/${id}/photo`, file);
   
-    // dispatch({
-    //   type: ADD_PHOTO,
-    //   payload: res.data
-    // });
+    dispatch({
+      type: ADD_PHOTO,
+      payload: res.data
+    });
+    history.push(`/dashboard`)
     
   } catch (error) {
     console.log(error)

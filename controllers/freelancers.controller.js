@@ -161,7 +161,8 @@ exports.freelancerPhotoUpload = asyncHandler(async (req, res, next) => {
   }
 
   // Create custom filename
-  file.name = `photo_${freelancer._id}${path.parse(file.name).ext}`;
+  // file.name = `photo_${freelancer._id}${path.parse(file.name).ext}`;
+  file.name = `photo_${freelancer._id}_${file.name}`;
 
   file.mv(`${process.env.FILE_UPLOAD_PATH}/${file.name}`, async err => {
     if (err) {
