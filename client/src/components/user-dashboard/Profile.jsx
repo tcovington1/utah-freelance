@@ -4,21 +4,30 @@ import NoPhoto from '../../assets/no-photo.png'
 import PropTypes from 'prop-types'
 // import photo from `../../../../public/uploads/${photo}`
 
+import ProfileService from './ProfileService'
+
 // Redux
 import { connect } from 'react-redux'
 import { deleteFreelancer } from '../../redux/actions/freelancers.actions';
+import { getProfileServices } from '../../redux/actions/service.actions';
 
 // Icons
 import { Icon, InlineIcon } from '@iconify/react';
 import starIcon from '@iconify/icons-mdi/star';
 
 
-const Profile = ({deleteFreelancer, profile, user}) => {
+const Profile = ({deleteFreelancer, getProfileServices, profile, user, profileServices}) => {
   const [isToggle, setIsToggle] = useState(false);
 
   const fullName = user.firstName + ' ' + user.lastName
 
-  const { photo, name, bio, website, phone, email, address, services} = profile;
+  const { photo, name, bio, website, phone, email, address} = profile;
+
+  useEffect(() => {
+    getProfileServices(profile.id)
+  }, [getProfileServices])
+
+  console.log(profileServices)
 
   const deleteAcct = () => {
     //deleteFreelancer comes from freelancer.actions redux
@@ -58,6 +67,13 @@ const Profile = ({deleteFreelancer, profile, user}) => {
           <InlineIcon icon={starIcon} color="#F49D1E" width='4rem'/>
           </div>
         </div>
+        <div className="cntr">
+      { profileServices ? (
+        profileServices.map( service => (
+        <ProfileService key={service._id} service={service} />
+      ))
+      ) : <h4>No services were found...</h4> }
+    </div>
         
       </div>
     </div>
@@ -68,7 +84,8 @@ const Profile = ({deleteFreelancer, profile, user}) => {
       <>
        <Link className="btn btn-med btn-primary my-half" onClick={() => setIsToggle(!isToggle)}>Less Options</Link>
        <Link to={`/editfreelancer/${profile.id}`} className="btn btn-med btn-light my-half">Edit Freelancer Profile</Link>
-       <Link to={`/freelancers/${profile.id}/addphoto`} className="btn btn-med btn-lighter my-half">Add a Photo</Link>
+       <Link to={`/editfreelancer/${profile.id}`} className="btn btn-med btn-light my-half">Add Services</Link>
+       <Link to={`/freelancers/${profile.id}/addservices`} className="btn btn-med btn-lighter my-half">Add a Photo</Link>
        <Link to='/addphoto' className="btn btn-med btn-lightest my-half">Add Services</Link>
        <button className="btn btn-med btn-delete my-half" onClick={deleteAcct}>Delete Freelancer</button>
        </>
@@ -98,6 +115,12 @@ const Profile = ({deleteFreelancer, profile, user}) => {
 
 Profile.propTypes = {
   deleteFreelancer: PropTypes.func.isRequired,
+  getProfileServices: PropTypes.func.isRequired,
+  profileServices: PropTypes.object.isRequired,
 }
 
-export default connect(null, { deleteFreelancer })(Profile)
+const mapStateToProps = state => ({
+  profileServices: state?.service?.services || []
+})
+
+export default connect(mapStateToProps, { deleteFreelancer, getProfileServices })(Profile)
