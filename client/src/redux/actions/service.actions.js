@@ -29,24 +29,24 @@ export const getServices = () => async dispatch => {
   }
 }
 
-// // Get Freelancer Services
-// export const getServices = (id) => async dispatch => {
-//   try {
-//     const res = await axios.get(`/freelancers/${id}/offerings`);
-//     const services = res?.data || []
+// Get Freelancer Services
+export const getProfileServices = (id) => async dispatch => {
+  try {
+    const res = await axios.get(`/freelancers/${id}/services`);
+    const services = res?.data?.data || []
 
-//     dispatch({
-//       type: SERVICES_LIST,
-//       //this payload is then passed to reducer
-//       services
-//     })
-//   } catch (err) {
-//     console.log(err)
-//     dispatch({
-//       type: SERVICE_ERROR,
-//       payload: {
-//         // msg: err.response.statusText, status: err.response.status
-//       }
-//     });
-//   }
-// }
+    dispatch({
+      type: GET_FREELANCER_SERVICES,
+      //this payload is then passed to reducer
+      services
+    })
+  } catch (err) {
+    console.log(err)
+    dispatch({
+      type: SERVICE_ERROR,
+      payload: {
+        // msg: err.response.statusText, status: err.response.status
+      }
+    });
+  }
+}
