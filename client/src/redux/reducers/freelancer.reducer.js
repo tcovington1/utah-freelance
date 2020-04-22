@@ -5,7 +5,8 @@ import {
   DELETE_PROFILE, 
   CLEAR_PROFILE, 
   FREELANCER_ERROR, 
-  UPDATE_FREELANCER_LIST
+  UPDATE_FREELANCER_LIST,
+  ADD_PHOTO
 } from "../actions/types.actions";
 
 const initialState = {
@@ -17,7 +18,7 @@ const initialState = {
 }
 
 export default function(state = initialState, action) {
-  const { type, freelancerList, freelancer, profile } = action;
+  const { type, freelancerList, freelancer, profile, payload } = action;
 
   switch(type) {
     case GET_FREELANCER:
@@ -30,6 +31,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         freelancerList,
+        loading: false
+      }
+    case ADD_PHOTO:
+      return {
+        ...state,
+        payload,
         loading: false
       }
       case GET_PROFILE:

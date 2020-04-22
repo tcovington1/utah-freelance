@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'
 //withRouter lets us use the history.push from profile.actions.js
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { addPhoto, getCurrentProfile } from '../../../redux/actions/freelancers.actions'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-const AddPhoto = ({ addPhoto, getCurrentProfile, profile }) => {
-  const [file, setFile] = useState({
-    photo: ''
-  });
+const AddPhoto = ({ addPhoto, getCurrentProfile, profile, history, match }) => {
+  const [file, setFile] = useState('');
   const [filename, setFilename] = useState('Choose File');
 
   const { 
@@ -29,7 +27,9 @@ const AddPhoto = ({ addPhoto, getCurrentProfile, profile }) => {
 
    const onSubmit = e => {
      e.preventDefault();
-     addPhoto(file, profile.id );
+     const formData = new FormData();
+     formData.append('file', file)
+     addPhoto(formData, profile.id, history );
    }
    
   return (
@@ -65,6 +65,6 @@ const mapStateToProps = state => ({
 })
 
                       //no mapStateToProps       //using withRouter here so we can use history                   
-export default connect(mapStateToProps, { addPhoto, getCurrentProfile })(AddPhoto)
+export default connect(mapStateToProps, { addPhoto, getCurrentProfile })(withRouter(AddPhoto))
 
 // export default AddPhoto;

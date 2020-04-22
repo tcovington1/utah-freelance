@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import NoPhoto from '../../assets/no-photo.png'
 import PropTypes from 'prop-types'
+// import photo from `../../../../public/uploads/${photo}`
 
 // Redux
 import { connect } from 'react-redux'
@@ -17,7 +18,7 @@ const Profile = ({deleteFreelancer, profile, user}) => {
 
   const fullName = user.firstName + ' ' + user.lastName
 
-  const { photo, name, bio, website, phone, email, address} = profile;
+  const { photo, name, bio, website, phone, email, address, services} = profile;
 
   const deleteAcct = () => {
     //deleteFreelancer comes from freelancer.actions redux
@@ -25,6 +26,9 @@ const Profile = ({deleteFreelancer, profile, user}) => {
     return <Redirect to='/dashboard' />
   }
 
+  // const myPhoto = require(`../../../../public/uploads/${photo}`)
+  // const myPhoto = require(`../../../../public/uploads/${photo}`).ReactComponent;
+  
   return (
     <>
     <div className="cntr profile_main">
@@ -32,12 +36,10 @@ const Profile = ({deleteFreelancer, profile, user}) => {
         <div className="profile_box-pic">
           {photo === 'no-photo.png' ? <img src={NoPhoto} alt="" className='round-img' style={{position: 'absolute', left: '10px', top: '30px'}}/>
           :
-            <img src={photo} alt="" className='round-img' style={{position: 'absolute', left: '10px', top: '30px'}}/>
-            }
-            {/* <span className="round-img" style={{position: 'absolute', left: '10px', top: '30px', backgroundColor: 'white', width: '14rem'}}></span> */}
+            <img src={NoPhoto} alt="" className='round-img' style={{position: 'absolute', left: '10px', top: '30px'}}/>
+          }
         </div>
         <div className="profile_box-data">
-          {/* <h1 className='heading'>Hi {user.firstName},</h1> */}
           <h1 className='heading-main'>{name}</h1>
         </div>
       </div>
@@ -48,6 +50,7 @@ const Profile = ({deleteFreelancer, profile, user}) => {
           <h3>{website}</h3>
           <h3>{phone}</h3>
           <h3>{email}</h3>
+          
           <div className="profile-rating">
           <InlineIcon icon={starIcon} color="#F49D1E" width='4rem'/>
           <InlineIcon icon={starIcon} color="#F49D1E" width='4rem'/>
@@ -59,7 +62,7 @@ const Profile = ({deleteFreelancer, profile, user}) => {
       </div>
     </div>
     <div className="cntr">
-
+    {  }
     { !isToggle ?  <span className="btn btn-med btn-primary my-half" onClick={() => setIsToggle(!isToggle)}>More Options</span> 
     : (
       <>

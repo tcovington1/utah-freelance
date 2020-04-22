@@ -18,6 +18,7 @@ import Dashboard from './components/user-dashboard/Dashboard'
 import Alert from './components/layout/Alert';
 import Freelancers from './components/freelancers/FreelancerList'
 import ForgotPassword from './components/auth/ForgotPassword'
+import Services from './components/freelancers/services/Services'
 
 // Private route
 import PrivateRoute from './components/auth/PrivateRoute'
@@ -48,6 +49,7 @@ const App = () => {
         <Route exact path='/forgotpassword' component={ForgotPassword} />
         <Route exact path='/freelancers' component={Freelancers} />
         <Route exact path='/freelancers/:id' component={Freelancer} />
+        <Route exact path='/services' component={Services} />
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
         <PrivateRoute exact path='/createfreelancer' component={CreateFreelancer} />
         <PrivateRoute exact path='/editfreelancer/:id' component={EditFreelancerForm} />
