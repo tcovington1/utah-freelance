@@ -14,10 +14,19 @@
   box-shadow: 0 1rem 2rem rgba(#000,.2);
 }
 
+
+.side-navbar {
+  position: fixed;
+  width: 20rem;
+  height: 100%;
+  background-color: red;
+}
 .landing {
   position: relative;
-  background: url('../../assets/UF-landing.jpg') no-repeat center center/cover;
-  background-position: top;
+  // background: url('../../assets/UF-landing.jpg') no-repeat center center/cover;
+  background: url('../../assets/mountain-logo.png') no-repeat center center/cover;
+  background-position: -201px -153px;
+  top: -20%;
   // background: url('../assets/dcmain.jpg') no-repeat center center/cover;
   height: 100vh;
 
@@ -40,6 +49,6 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(255,255,255, 0.4);
+  background-color: rgba(255,255,255, 0.6);
   // background-color: rgba(255,255,255, 0.8);
 }

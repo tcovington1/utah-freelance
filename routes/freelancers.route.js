@@ -6,6 +6,7 @@ const {
   createFreelancer,
   updateFreelancer,
   deleteFreelancer,
+  getPhoto,
   freelancerPhotoUpload
 } = require('../controllers/freelancers.controller');
 
@@ -44,6 +45,8 @@ router
   .put(protect, authorize('publisher', 'admin'), updateFreelancer)
   .delete(protect, authorize('publisher', 'admin'), deleteFreelancer);
 
-router.route('/:id/photo').put(protect, authorize('publisher', 'admin'), freelancerPhotoUpload)
+router.route('/:id/photo')
+  .put(protect, authorize('publisher', 'admin'), freelancerPhotoUpload)
+  .get(protect, authorize('publisher', 'admin'), getPhoto)
 
 module.exports = router;

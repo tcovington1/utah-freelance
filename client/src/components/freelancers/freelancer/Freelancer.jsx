@@ -26,34 +26,32 @@ const Freelancer = ({ match, getFreelancerById, freelancer: {
     getFreelancerById(match.params.id);
   }, [getFreelancerById, match.params.id])
 
-  console.log(name)
-
   return (
     <>
     <div className="cntr profile_main">
       <div className="profile_heading">
         <div className="profile_box-pic">
-          {photo === 'no-photo.png' ? <img src={NoPhoto} alt="" className='round-img' style={{position: 'absolute', left: '10px', top: '30px'}}/>
+          {photo === 'no-photo.png' ? <img src={NoPhoto} alt="" className='round-img' style={{position: 'absolute', left: '10px', top: '12px'}}/>
             :
-            <img src={photo} alt="" className='round-img' style={{position: 'absolute', left: '10px', top: '30px'}}/>
+            <img src={photo} alt="" className='round-img' style={{position: 'absolute', left: '10px', top: '12px'}}/>
           }
         </div>
       <div className="profile_box-data">
         <h1 className="heading-main">{name}</h1>
+          <p>{phone}</p>
+          <p>{email}</p>
+          <div className="profile-rating">
+          <InlineIcon icon={starIcon} color="#F49D1E" width='2.5rem'/>
+          <InlineIcon icon={starIcon} color="#F49D1E" width='2.5rem'/>
+          <InlineIcon icon={starIcon} color="#F49D1E" width='2.5rem'/>
+          <InlineIcon icon={starIcon} color="#F49D1E" width='2.5rem'/>
+          </div>
       </div>
       </div>
       <div className="profile_body">
         <div className="profile_body-content">
           <h3>{bio}</h3>
           <h3>{website}</h3>
-          <h3>{phone}</h3>
-          <h3>{email}</h3>
-          <div className="profile-rating">
-          <InlineIcon icon={starIcon} color="#F49D1E" width='4rem'/>
-          <InlineIcon icon={starIcon} color="#F49D1E" width='4rem'/>
-          <InlineIcon icon={starIcon} color="#F49D1E" width='4rem'/>
-          <InlineIcon icon={starIcon} color="#F49D1E" width='4rem'/>
-          </div>
 
         </div>
       </div>

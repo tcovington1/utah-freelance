@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import  { Breakpoint, BreakpointProvider } from 'react-socks';
 
 import './styles/main.scss';
 
@@ -26,6 +27,7 @@ import CreateFreelancer from './components/freelancers/freelancer-form/CreateFre
 import Freelancer from './components/freelancers/freelancer/Freelancer';
 import EditFreelancerForm from './components/freelancers/freelancer-form/EditFreelancer.form';
 import AddPhoto from './components/freelancers/freelancer-form/AddPhoto.form';
+import AddService from './components/freelancers/services/service-form/AddService.form';
 
 
 if (localStorage.token) {
@@ -39,23 +41,26 @@ const App = () => {
 
   return (
     <>
-    <Navbar />
-      <Switch>
-        <Route exact path='/' component={Landing} />
-    <section className="container">
-      <Alert />
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/register' component={Register} />
-        <Route exact path='/forgotpassword' component={ForgotPassword} />
-        <Route exact path='/freelancers' component={Freelancers} />
-        <Route exact path='/freelancers/:id' component={Freelancer} />
-        <Route exact path='/services' component={Services} />
-        <PrivateRoute exact path='/dashboard' component={Dashboard} />
-        <PrivateRoute exact path='/createfreelancer' component={CreateFreelancer} />
-        <PrivateRoute exact path='/editfreelancer/:id' component={EditFreelancerForm} />
-        <PrivateRoute exact path='/freelancers/:id/addphoto' component={AddPhoto} />
-    </section>
-      </Switch>
+    <BreakpointProvider>
+      {/* <Navbar /> */}
+        <Switch>
+          <Route exact path='/' component={Landing} />
+      <section className="container">
+        <Alert />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/register' component={Register} />
+          <Route exact path='/forgotpassword' component={ForgotPassword} />
+          <Route exact path='/freelancers' component={Freelancers} />
+          <Route exact path='/freelancers/:id' component={Freelancer} />
+          <Route exact path='/services' component={Services} />
+          <PrivateRoute exact path='/dashboard' component={Dashboard} />
+          <PrivateRoute exact path='/createfreelancer' component={CreateFreelancer} />
+          <PrivateRoute exact path='/editfreelancer/:id' component={EditFreelancerForm} />
+          <PrivateRoute exact path='/freelancers/:id/addphoto' component={AddPhoto} />
+          <PrivateRoute exact path='/freelancers/:id/addservice' component={AddService} />
+      </section>
+        </Switch>
+    </BreakpointProvider>
     </>
   );
 }

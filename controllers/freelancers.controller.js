@@ -181,8 +181,14 @@ exports.freelancerPhotoUpload = asyncHandler(async (req, res, next) => {
   });
 });
 
+exports.getPhoto = async (req,res) => {
+  const path =  require('path');
+  const photoName = path.join(__dirname, '../public/uploads/test.jpeg' )
+  res.sendFile(photoName)
+}
 
-//*Get the users freelancer profile
+
+//* Get the users freelancer profile
 //* @route GET /api/v1/freelancers/me
 //* @access Private (need a token)
 
