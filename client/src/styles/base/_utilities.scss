@@ -52,9 +52,13 @@
   width: 13rem;
   clip-path: circle(50% at 50% 50%);
   margin: 2px
-
+  
   &_post {
     width: 65%;
+  }
+  &_sm {
+    width: 8rem;
+
   }
 }
 
@@ -77,7 +81,8 @@
 }
 
 .lead {
-  font-size: 2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
   margin-bottom: 1rem;
   
   @media only screen and (max-width : $mob-width) {
@@ -128,6 +133,8 @@
 
 .cntr-middle {
   position: relative;
+  background: url('../../assets/mountain-logo.png') no-repeat center center/cover;
+  background-position: -201px 163px;
   width: 100%;
   height: 100vh;
 
@@ -201,13 +208,7 @@
   left: 50%;
 }
 
-//Hide
 
-@media only screen and (min-width: 500px) {
-  .lg-hide {
-    display: none;
-  }
-}
 
 
 //margins
@@ -218,7 +219,7 @@
 .my-1 {
   margin: 1rem 0;
 }
-.my-1 {
+.my-2 {
   margin: 2rem 0;
 }
 
@@ -249,3 +250,34 @@
 
 
 // }
+
+
+// HIDE
+// links
+.link {
+  color: white;
+  &_primary {
+    color: $primary-color
+  }
+}
+
+//Hide on desktop
+
+@media only screen  and (min-width : 500px) {
+  .lg-hide {
+    display: none;
+  }
+  }
+
+  @media only screen and (max-width : $mob-width) {
+    
+    .mob-hide {
+      display: none;
+    }
+    .mob_nav-links {
+      margin: auto;
+      width: 100%;
+      justify-content: space-evenly;
+    }
+  
+  }

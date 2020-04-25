@@ -9,7 +9,7 @@ const ServiceItem = ({service: {
 }}) => {
   return (
     <>
-     <div className="cntr">
+     <div className="cntr my-1">
       <p>{freelancer.name}</p>
       <p>{ name }</p>
       <p>{ description }</p>

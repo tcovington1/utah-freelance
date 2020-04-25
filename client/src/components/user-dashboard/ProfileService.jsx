@@ -7,9 +7,11 @@ const ProfileService = ({service: {
 }}) => {
   return (
     <>
+    <div className="my-1">
       <p>{name}</p>
       <p>{description}</p>
-      <p>{price}</p>
+      <p>${price}</p>
+    </div>
     </>
   )
 }

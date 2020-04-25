@@ -11,8 +11,8 @@ import accountIcon from '@iconify/icons-mdi/account';
 import logoutIcon from '@iconify/icons-mdi/logout';
 
 
-
-const Navbar = ({logout, auth: {isAuthenticated, loading}}) => {
+// auth: {isAuthenticated, loading
+const LoggedInNav = ({logout}) => {
   const authLinks = (
     <ul>
         <li>
@@ -48,7 +48,7 @@ const Navbar = ({logout, auth: {isAuthenticated, loading}}) => {
   )
 
   return(
-    <nav className='navbar'>
+    <nav className='side-navbar'>
       <h3 className='logo'>
         <Link to='/'>Utah Freelance</Link>
       </h3>
@@ -57,7 +57,7 @@ const Navbar = ({logout, auth: {isAuthenticated, loading}}) => {
   )
 }
 
-Navbar.propTypes = {
+LoggedInNav.propTypes = {
   logout: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
 }
@@ -66,4 +66,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 })
 
-export default connect(mapStateToProps, { logout })(Navbar)
+export default connect(mapStateToProps, { logout })(LoggedInNav)
