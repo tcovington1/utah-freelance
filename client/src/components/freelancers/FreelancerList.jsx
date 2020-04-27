@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getFreelancerList } from '../../redux/actions/freelancers.actions'
 import FreelancerItem from './FreelancerItem'
+import Navbar from '../layout/Navbar'
 
 // freelancer: {freelancers, loading}
 const Freelancers = ({ getFreelancerList, freelancerList }) => {
@@ -11,7 +12,8 @@ const Freelancers = ({ getFreelancerList, freelancerList }) => {
   }, []);
   return (
     <>
-    <div className="cntr">
+    <Navbar />
+    <div className="container" style={{display: 'flex', justifyContent: 'space-around', width: '100%', height: '100%'}}>
       { freelancerList.length > 0 ? (
         freelancerList.map( freelancer => (
         <FreelancerItem key={freelancer._id} freelancer={freelancer} />
