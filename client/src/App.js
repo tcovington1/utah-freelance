@@ -45,6 +45,12 @@ const App = () => {
       {/* <Navbar /> */}
         <Switch>
           <Route exact path='/' component={Landing} />
+          <PrivateRoute exact path='/dashboard' component={Dashboard} />
+          <PrivateRoute exact path='/createfreelancer' component={CreateFreelancer} />
+          <PrivateRoute exact path='/editfreelancer/:id' component={EditFreelancerForm} />
+          <PrivateRoute exact path='/freelancers/:id/addphoto' component={AddPhoto} />
+          <PrivateRoute exact path='/freelancers/:id/addservice' component={AddService} />
+          {/* <PrivateRoute exact path='/freelancers/:id/services' component={FreelancerServices} /> */}
       <section className="container">
         <Alert />
           <Route exact path='/login' component={Login} />
@@ -53,11 +59,6 @@ const App = () => {
           <Route exact path='/freelancers' component={Freelancers} />
           <Route exact path='/freelancers/:id' component={Freelancer} />
           <Route exact path='/services' component={Services} />
-          <PrivateRoute exact path='/dashboard' component={Dashboard} />
-          <PrivateRoute exact path='/createfreelancer' component={CreateFreelancer} />
-          <PrivateRoute exact path='/editfreelancer/:id' component={EditFreelancerForm} />
-          <PrivateRoute exact path='/freelancers/:id/addphoto' component={AddPhoto} />
-          <PrivateRoute exact path='/freelancers/:id/addservice' component={AddService} />
       </section>
         </Switch>
     </BreakpointProvider>

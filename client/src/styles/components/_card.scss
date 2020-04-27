@@ -2,10 +2,19 @@
 
 .card {
   background: #FFFFFF;
-  box-shadow: 0px 12px 42px rgba(100, 91, 171, 0.668025);
-  border-radius: 25px;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.10);
+  border-radius: 5px;
   padding: 2rem;
   height: 100%;
+  
+  &_profile {
+    width: 40rem;
+    height: 60rem;
+    // position: absolute;
+    // top: 5;
+    // right: 5;
+    
+  }
 
   &_top {
     height: 20%;
@@ -16,11 +25,16 @@
 
   }
   &_review {
-    display: flex;
   margin: .5rem;
-  padding: 1rem;
-  box-shadow: 0px 28px 30px #E9ECF9;
+  width: 60rem;
+  padding: 2.5rem;
+  box-shadow: 0px 4px 4px #E9ECF9;
   border-radius: 5px; 
+  margin-bottom: 5rem;
+  @media only screen and (max-width : 500px) {
+    width: 40rem;
+    margin: 0rem;
+    }
 
   }
 

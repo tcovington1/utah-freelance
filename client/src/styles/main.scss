@@ -30,14 +30,42 @@
 
 // Profile
 
+.profile-flex {
+  display: flex;
+  margin-left: 5rem;
+
+  @media only screen and (max-width : 500px) {
+    flex-direction: column;
+    margin-left: .5rem;
+    }
+
+}
+
 .profile {
+  display: flex;
+  
 
   &_main{
-    position: relative
+    background: linear-gradient(139deg, rgba(143,143,144,.5) 0%, rgba(173,178,179,1) 35%, rgba(245,252,254,1) 100%);
+
+    position: relative;
+    margin-left: 13rem;
+    @media only screen and (max-width : 500px) {
+      margin-left: 0rem;
+      }
+  }
+
+  &_side {
+    flex-direction: column;
+    margin-left: 7rem;
+
+    @media only screen and (max-width : 500px) {
+      margin-left: 0rem;
+      // margin-left: .5rem;
+      }
   }
   &_heading {
-    
-    border-radius: 3rem 3rem 0 0;
+    position: absolute;
     width: 100%;
     height: 15rem;
     display: flex;
@@ -45,7 +73,7 @@
     
   }
   &_box-pic {
-    width: 28%;
+    width: 4%;
   }
   &_box-data {
     width: 70%;
@@ -69,6 +97,7 @@
 
   &_reviews {
     width: 95%;
+    
 
     &-author {
       margin-top: 1rem;
@@ -76,5 +105,10 @@
   }
 
 
+}
+
+.logged-cont {
+  width: 100%;
+  display: flex;
 }
 

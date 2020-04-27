@@ -5,7 +5,7 @@ import { editFreelancer, getCurrentProfile } from '../../../redux/actions/freela
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-const EditFreelancer = ({ editFreelancer, getCurrentProfile , profile , history }) => {
+const EditFreelancer = ({ editFreelancer, getCurrentProfile , profile , history, modal, setModal }) => {
   const [formData, setFormData] = useState({
     name: '',
     bio: '',
@@ -16,6 +16,8 @@ const EditFreelancer = ({ editFreelancer, getCurrentProfile , profile , history 
     title: '',
     
   });
+
+  console.log(modal)
 
   useEffect(() => {
     getCurrentProfile();
@@ -132,7 +134,8 @@ const EditFreelancer = ({ editFreelancer, getCurrentProfile , profile , history 
         </div> */}
         <div className="cntr">
           <input type="submit" className='btn btn-primary btn-med my-1' />
-          <button className='btn btn-light btn-med my-1' ><Link to='/dashboard' className='link_color-primary'>Go back</Link></button>
+          {/* <button className='btn btn-light btn-med my-1' ><Link to='/dashboard' className='link_color-primary'>Go back</Link></button> */}
+          <button onClick={() => setModal(!modal)} className='btn btn-primary btn-med my-1'>Close</button>
         </div>
       </form>
     </>

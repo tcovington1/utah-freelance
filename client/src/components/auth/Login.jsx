@@ -10,6 +10,7 @@ import { login } from '../../redux/actions/auth.actions'
 
 import { Icon, InlineIcon } from '@iconify/react';
 import accountIcon from '@iconify/icons-mdi/account';
+import Navbar from '../layout/Navbar';
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -35,6 +36,7 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <>
+    <Navbar />
     <div className="form-container">
       <h1 className="large text-primary">Welcome back,</h1>
       <p className="lead"><Icon icon={accountIcon} />Sign Into Your Account</p>

@@ -17,9 +17,19 @@
 
 .side-navbar {
   position: fixed;
-  width: 20rem;
+  width: 13rem;
   height: 100%;
-  background-color: red;
+  color: white;
+  background-color: #343642;
+}
+
+.navlinks {
+  color: white;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
 }
 .landing {
   position: relative;
