@@ -5,7 +5,7 @@ import { addPhoto, getCurrentProfile } from '../../../redux/actions/freelancers.
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-const AddPhoto = ({ addPhoto, getCurrentProfile, profile, history, match }) => {
+const AddPhoto = ({ addPhoto, getCurrentProfile, profile, history, match, modal, setModal }) => {
   const [file, setFile] = useState('');
   const [filename, setFilename] = useState('Choose File');
 
@@ -47,7 +47,8 @@ const AddPhoto = ({ addPhoto, getCurrentProfile, profile, history, match }) => {
         </div>
         <div className="cntr">
           <input type="submit" className='btn btn-primary my-1' />
-          <button className='btn btn-light my-1' ><Link to='/dashboard' className='link_color-primary'>Go back</Link></button>
+          {/* <button className='btn btn-light my-1' ><Link to='/dashboard' className='link_color-primary'>Go back</Link></button> */}
+          <button className='btn btn-light my-1' onClick={() => setModal(!modal)}>Close</button>
         </div>
       </form>
     </>

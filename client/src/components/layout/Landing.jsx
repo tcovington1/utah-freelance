@@ -5,6 +5,7 @@ import Navbar from './Navbar'
 
 const Landing = () => {
   return (
+    <>
     <Navbar />
     <section className="landing">
       <div className="light-overlay">
@@ -21,6 +22,7 @@ const Landing = () => {
         </div>
       </div>
     </section>
+    </>
   )
 }
 
