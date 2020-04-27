@@ -42,7 +42,6 @@ const App = () => {
   return (
     <>
     <BreakpointProvider>
-      {/* <Navbar /> */}
         <Switch>
           <Route exact path='/' component={Landing} />
           <PrivateRoute exact path='/dashboard' component={Dashboard} />
@@ -51,7 +50,8 @@ const App = () => {
           <PrivateRoute exact path='/freelancers/:id/addphoto' component={AddPhoto} />
           <PrivateRoute exact path='/freelancers/:id/addservice' component={AddService} />
           {/* <PrivateRoute exact path='/freelancers/:id/services' component={FreelancerServices} /> */}
-      <section className="container">
+      {/* <Navbar /> */}
+      <section className="">
         <Alert />
           <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Register} />

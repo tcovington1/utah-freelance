@@ -37,6 +37,8 @@ const Login = ({ login, isAuthenticated }) => {
   return (
     <>
     <Navbar />
+    <div className="container">
+
     <div className="form-container">
       <h1 className="large text-primary">Welcome back,</h1>
       <p className="lead"><Icon icon={accountIcon} />Sign Into Your Account</p>
@@ -83,6 +85,7 @@ const Login = ({ login, isAuthenticated }) => {
         <p className="my-1 center">Don't have an account? <Link to='/register' className='link_primary'>Sign Up</Link></p>
       {/* </div> */}
     </div>
+</div>
     </>
   )
 }
