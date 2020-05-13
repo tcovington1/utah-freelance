@@ -36,7 +36,6 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <>
-    <Navbar />
     <div className="container">
 
     <div className="form-container">
