@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { getFreelancerList } from '../../redux/actions/freelancers.actions'
 import FreelancerItem from './FreelancerItem'
 import Navbar from '../layout/Navbar'
+import ProfileCard from '../user-dashboard/ProfileCard'
+import FreelancerSearchBox from './FreelancerSearchBox'
 
 // freelancer: {freelancers, loading}
 const Freelancers = ({ getFreelancerList, freelancerList }) => {
@@ -12,13 +14,24 @@ const Freelancers = ({ getFreelancerList, freelancerList }) => {
   }, []);
   return (
     <>
-    <Navbar />
-    <div className="container" style={{display: 'flex', justifyContent: 'space-around', width: '100%', height: '100%'}}>
-      { freelancerList.length > 0 ? (
-        freelancerList.map( freelancer => (
-        <FreelancerItem key={freelancer._id} freelancer={freelancer} />
-      ))
-      ) : <h4>No profiles were found...</h4> }
+    <div style={{margin: '7rem 4rem'}}>
+      <div style={{display: 'flex'}}>
+        <div>
+          <FreelancerSearchBox />
+        </div>
+        <div style={{marginLeft: '3rem'}}>
+
+          { freelancerList.length > 0 ? (
+           freelancerList.map( freelancer => (
+            // <FreelancerItem key={freelancer._id} freelancer={freelancer} />
+            <div style={{margin: '2rem', padding: '2rem', border: '1px solid black'}}>
+
+              <ProfileCard key={freelancer._id} freelancer={freelancer} />
+            </div>
+          ))
+          ) : <h4>No profiles were found...</h4> }
+        </div>
+      </div>
     </div>
     </>
   )

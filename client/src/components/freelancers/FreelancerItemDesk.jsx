@@ -18,32 +18,26 @@ const Freelancer = ({ freelancer: {
   title
  } }) => {
   return (
-    <div className='card card_freelancer my-1'>
-      <div className="card_top">
-        <img src={fillPhoto} alt="freelancer photo" style={{objectFit: 'cover', borderRadius: '25px'}}/>
+    <>
+    <div className="card_flex">
+    <div className="card_img">
+      {photo === 'no-photo.png' ? <img src={NoPhoto} alt="" className='round-img' />
+      :
+        <img src={'http://localhost:5000/api/v1/freelancers/1/photo'} alt="" className='round-img' />
+      }
+    </div>
+    <div className="card_body">
+      <h3 className='heading_main heading__primary'>{name}</h3>
+      <div className="badge">
+        <p>{address}</p>
       </div>
-      <div className="card_body">
-        <h2 className='heading_main heading__primary'>{name}</h2>
-        {title.map(res => 
-          <h3>{res}</h3>
-          )}
-        <p>{bio}</p>
-        <p>{phone}</p>
-        <div className="profile-rating">
-          <InlineIcon icon={starIcon} color="#F49D1E" width='4rem'/>
-          <InlineIcon icon={starIcon} color="#F49D1E" width='4rem'/>
-          <InlineIcon icon={starIcon} color="#F49D1E" width='4rem'/>
-          <InlineIcon icon={starIcon} color="#F49D1E" width='4rem'/>
-          </div>
+      <p className='heading_sub'>{title}</p>
+      <div className="card_rating">
+      {averageRating}
       </div>
-        <Link to={`/freelancers/${_id}`} className='btn btn-primary btn-med' style={{marginTop: '1rem'}}>View Profile</Link>
-      </div>
-
-  )
-}
-
-Freelancer.propTypes = {
-  freelancer: PropTypes.object.isRequired,
-}
+    </div>
+  </div> 
+  </>
+  )}
 
 export default Freelancer

@@ -41,9 +41,11 @@ const App = () => {
 
   return (
     <>
-    <BreakpointProvider>
+    {/* <BreakpointProvider> */}
+    <Navbar />
         <Switch>
           <Route exact path='/' component={Landing} />
+        <div className="container">
           <PrivateRoute exact path='/dashboard' component={Dashboard} />
           <PrivateRoute exact path='/createfreelancer' component={CreateFreelancer} />
           <PrivateRoute exact path='/editfreelancer/:id' component={EditFreelancerForm} />
@@ -60,8 +62,9 @@ const App = () => {
           <Route exact path='/freelancers/:id' component={Freelancer} />
           <Route exact path='/services' component={Services} />
       </section>
+        </div>
         </Switch>
-    </BreakpointProvider>
+    {/* </BreakpointProvider> */}
     </>
   );
 }

@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
 // Icons
 import { Icon, InlineIcon } from '@iconify/react';
 import starIcon from '@iconify/icons-mdi/star';
+import Navbar from '../../layout/Navbar'
 
 
 const Freelancer = ({ match, getFreelancerById, freelancer: { 
@@ -19,7 +20,9 @@ const Freelancer = ({ match, getFreelancerById, freelancer: {
   phone,
   email,
   website,
-  photo 
+  photo,
+  address,
+  averageRating
  } }) => {
 
   useEffect(() => {
@@ -28,38 +31,31 @@ const Freelancer = ({ match, getFreelancerById, freelancer: {
 
   return (
     <>
-    <div className="cntr profile_main">
-      <div className="profile_heading">
-        <div className="profile_box-pic">
-          {photo === 'no-photo.png' ? <img src={NoPhoto} alt="" className='round-img' style={{position: 'absolute', left: '10px', top: '12px'}}/>
-            :
-            <img src={photo} alt="" className='round-img' style={{position: 'absolute', left: '10px', top: '12px'}}/>
-          }
-        </div>
-      <div className="profile_box-data">
-        <h1 className="heading-main">{name}</h1>
-          <p>{phone}</p>
-          <p>{email}</p>
-          <div className="profile-rating">
-          <InlineIcon icon={starIcon} color="#F49D1E" width='2.5rem'/>
-          <InlineIcon icon={starIcon} color="#F49D1E" width='2.5rem'/>
-          <InlineIcon icon={starIcon} color="#F49D1E" width='2.5rem'/>
-          <InlineIcon icon={starIcon} color="#F49D1E" width='2.5rem'/>
-          </div>
-      </div>
-      </div>
-      <div className="profile_body">
-        <div className="profile_body-content">
-          <h3>{bio}</h3>
-          <h3>{website}</h3>
+    <div style={{margin: '7rem 7rem', maxWidth: '1140px'}}>
 
+    <div className="flex">
+      <div className="main">
+      <h1 className='heading_main'>{name}</h1>
+      <p>{bio}</p>
+      <div>
+        <h3>Services</h3>
+      </div>
+      </div>
+      <div className="side">
+        <div className="flex-col ">
+          <img src={'http://localhost:5000/api/v1/freelancers/1/photo'} alt="" className='round-img'/>
+          <div>{averageRating}</div>
+          
+          <Link className='btn btn-primary btn-sm'>Read Reviews</Link>
+          <Link className='btn btn-primary_inverted btn-sm'>Write a Review</Link>
+          <a href={website} className='btn btn-gray btn-sm'>Visit Website</a>
         </div>
       </div>
-
     </div>
     <div className="cntr">
       <Link to='/freelancers' className=' btn btn-primary_inverted btn-med my-half' >Back</Link>
     </div>
+      </div>
     </>
   )
 }

@@ -1,51 +1,32 @@
 @import '../abstracts/variables';
 
 .card {
+  position: absolute;
   background: #FFFFFF;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.10);
   border-radius: 5px;
-  padding: 2rem;
+  padding: 4rem;
   // height: 100%;
   
   &_profile {
-    width: 40rem;
+    width: 80rem;
     height: 60rem;
     // position: absolute;
-    // top: 5;
-    // right: 5;
+    top: 100%;
+    left: 9%;
     
   }
 
-  &_freelancer {
-    
-    width: 50rem;
-    height: 50rem;
-    /* Desktops and laptops ----------- */
-  // @media only screen  and (min-width : 1224px) {
-  //   display: flex;
-  // }
+  &_flex {
+    display: flex;
   }
 
-  &_top {
-    // height: 15rem;
-    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  &_heading {
+
   }
+
   &_body {
-    // height: 35rem;
-
-  }
-  &_review {
-  margin: .5rem;
-  width: 60rem;
-  padding: 2.5rem;
-  box-shadow: 0px 4px 4px #E9ECF9;
-  border-radius: 5px; 
-  margin-bottom: 5rem;
-  @media only screen and (max-width : 500px) {
-    width: 40rem;
-    margin: 0rem;
-    }
-
+    padding: 1.25rem 2rem;
   }
 
   &_img{
@@ -53,4 +34,59 @@
     // flex-direction: column;
     // justify-content: center;
   }
+  &_rating {
+    background-color: $success-color;
+    color: #fff;
+    width: 5rem;
+    font-size: 2.5rem;
+    text-align: center;
+    vertical-align: baseline;
+    position: absolute;
+    top: 6%;
+    left: 65%;
+  }
+ 
+}
+
+.badge {
+  padding: .75rem .2rem;
+  width: 10rem;
+  font-size: 1.2rem;
+  background-color: $dark-color;
+  color: $light-color;
+  line-height: 1;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: baseline;
+}
+
+.freelanerList-card {
+  position: relative;
+  background: #FFFFFF;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.10);
+  border-radius: 5px;
+  padding: 4rem;
+
+  &_rating {
+    background-color: $success-color;
+    color: #fff;
+    width: 5rem;
+    font-size: 2.5rem;
+    text-align: center;
+    vertical-align: baseline;
+    position: absolute;
+    top: 6%;
+    left: 65%;
+  }
+
+}
+
+.search-card {
+  background: #FFFFFF;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.10);
+  border-radius: 5px;
+  padding: 4rem;
+  margin-bottom: 2rem;
+  width: 30rem;
+
 }

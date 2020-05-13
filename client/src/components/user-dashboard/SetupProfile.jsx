@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Navbar from '../layout/Navbar'
 
 const SetupProfile = ({name}) => {
   return (
     <>
+    <Navbar />
       <div className="cntr-middle">
           <div className='cntr-middle_box'>
             <div className="my-1">

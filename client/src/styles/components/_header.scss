@@ -1,0 +1,33 @@
+.header {
+  margin-top: 5rem;
+  height: 100vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($light-color, 0.699),
+      rgba($secondary-color, 0.401));
+      // ,
+      // url(../../assets/UF-landing.jpg);
+      // url(../../assets/mountain-logo.png);
+  background-size: cover;
+  background-position: bottom;
+  position: relative;
+  
+  &__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 3.5rem;
+  }
+
+  &__text-box {
+    position: absolute;
+    width: fit-content;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}

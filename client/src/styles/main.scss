@@ -5,12 +5,14 @@
 
 // Layouts
 @import './layout/layout';
+@import './layout/flex';
 
 // Components
 @import './components/navbar';
 @import './components/form';
 @import './components/button';
 @import './components/card';
+@import './components/header';
 
 // // Base
 // @import './base/animations';
@@ -41,69 +43,15 @@
 
 }
 
-.profile {
-  display: flex;
-  
+.profile {  
 
   &_main{
-    background: linear-gradient(139deg, rgba(143,143,144,.5) 0%, rgba(173,178,179,1) 35%, rgba(245,252,254,1) 100%);
-
     position: relative;
     margin-left: 13rem;
     @media only screen and (max-width : 500px) {
       margin-left: 0rem;
       }
   }
-
-  &_side {
-    flex-direction: column;
-    margin-left: 7rem;
-
-    @media only screen and (max-width : 500px) {
-      margin-left: 0rem;
-      // margin-left: .5rem;
-      }
-  }
-  &_heading {
-    position: absolute;
-    width: 100%;
-    height: 15rem;
-    display: flex;
-    background-color: #2C3E50;
-    
-  }
-  &_box-pic {
-    width: 4%;
-  }
-  &_box-data {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: #ffff;
-    padding-bottom: 1rem;
-    padding-left: 3rem
-  }
-  &_body {
-    padding: 0 2rem 2rem 2rem;
-    margin-top: 0.5rem;
-    box-shadow: 12px 4px 4px rgbx(0, 0, 0, 0.8);
-    
-    &-content {
-      color: #5C4B51;
-      padding-top: 2rem;
-    }
-  }
-
-  &_reviews {
-    width: 95%;
-    
-
-    &-author {
-      margin-top: 1rem;
-    }
-  }
-
 
 }
 

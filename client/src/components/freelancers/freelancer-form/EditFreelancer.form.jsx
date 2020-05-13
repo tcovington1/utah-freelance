@@ -62,7 +62,7 @@ const EditFreelancer = ({ editFreelancer, getCurrentProfile , profile , history,
       <small>* = required fields</small>
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className="form-group">
-          <small className='form-text'>Give us an idea of your title.</small>
+          <label className='form-text'>Title</label>
           <select name="title" value={title} onChange={e => onChange(e)}>
             <option value="0">* Select your Freelancer Title</option>
             <option value="Developer">Developer</option>
@@ -77,29 +77,32 @@ const EditFreelancer = ({ editFreelancer, getCurrentProfile , profile , history,
           </select>
         </div>
         <div className="form-group">
-          <small className="form-text">Please provide your name or the freelance company name</small>
+          <label className="form-text">Name</label>
           <input type="text" placeholder='Name' name='name' value={name} onChange={e => onChange(e)} />
         </div>
         <div className="form-group">
-          <small className="form-text">Please provide the email address for your freelance business</small>
+          <label className="form-text">Email</label>
           <input type="text" placeholder='Email' name='email' value={email} onChange={e => onChange(e)} />
         </div>
         <div className="form-group">
-          <small className="form-text">Could be your own or a company website</small>
+          <label className="form-text">Website</label>
           <input type="text" placeholder='Website' name='website' value={website} onChange={e => onChange(e)}/>
+          <small>Must be http or https</small>
         </div>
         <div className="form-group">
-          <small className="form-text">Provide the best number to contact you.</small>
+          <label className="form-text">Phone Number</label>
           <input type="text" placeholder='Phone' name='phone' value={phone} onChange={e => onChange(e)}/>
         </div>
         <div className="form-group">
-          <small className="form-text">City & State suggested (eg. Salt Lake City, UT)</small>
+          <label className="form-text">City & State (eg. Salt Lake City, UT)</label>
           <input type="text" placeholder='Address' name='address' value={address} onChange={e => onChange(e)}/>
         </div>
         <div className="form-group">
-          <small className="form-text">Help us get to know your business better</small>
+          <label className="form-text">Help us get to know your business better</label>
           <textarea placeholder='A short bio of yourself' name='bio' value={bio} onChange={e => onChange(e)}/>
         </div>
+
+
 
         {/* <div className="my-2">
           <span onClick={() => toggleSocialInputs(!displaySocialInputs)} className="btn btn-multi_primary">

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './layout.scss'
+// import './layout.scss'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { logout } from '../../redux/actions/auth.actions'
@@ -42,7 +42,8 @@ const Navbar = ({logout, auth: {isAuthenticated, loading}}) => {
           <Link to='/login'>Login</Link>              
         </li>
         <li>
-          <Link to='/register'>Register</Link>             
+          {/* <Link to='/register'>Register</Link>              */}
+          <Link to='/login' className="btn btn-primary_inverted">Register As Freelancer</Link>
         </li>
       </ul>
   )

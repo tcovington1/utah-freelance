@@ -1,5 +1,4 @@
 .btn {
-  
   display: inline-block;
   // background-color: $primary-color;
   color: $light-color;
@@ -22,8 +21,17 @@
       box-shadow: none ;
     }
 
+    &.btn-sm {
+      // font-size: 1rem;
+      padding: 1rem 1.5rem; 
+   
+      @media only screen and (max-width : $mob-width) {
+        font-size: 2rem;
+        width: 33rem;
+      }
+    }
     &.btn-med {
-      font-size: 1rem;
+      // font-size: 1rem;
       padding: 1.3rem 2rem; 
    
       @media only screen and (max-width : $mob-width) {
@@ -39,6 +47,9 @@
           padding: .7rem 6rem; 
         }
    
+    }
+    &-gray {
+      background-color: $color-gray-dark;
     }
 
     &-light {
@@ -67,6 +78,14 @@
     &-delete {
       background-color: $danger-color;
     }
+  }
+
+  // button spacing
+
+  .buttons {
+    display: flex;
+    
+    justify-content: space-around;
   }
 
   
