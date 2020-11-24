@@ -40,7 +40,8 @@ const Login = ({ login, isAuthenticated }) => {
 
     <div className="form-container">
       <h1 className="large text-primary">Welcome back,</h1>
-      <p className="lead"><Icon icon={accountIcon} />Sign Into Your Account</p>
+      <p className="lead">Sign Into Your Account</p>
+      {/* <Icon icon={accountIcon} /> */}
       {/* <div className="test-login">
         <p>If you'd like to test the site, you can use:</p>
         <h4>Email: john@email.com</h4>
@@ -77,7 +78,9 @@ const Login = ({ login, isAuthenticated }) => {
        
         </div>
         <div className="cntr">
+            <div className='my-top-3'>
           <button className='btn btn-primary btn-med center'>Log In</button>
+            </div>
         </div>
       </form>
          <Link to='/forgotpassword' className='link_primary'>Forgot Password</Link>

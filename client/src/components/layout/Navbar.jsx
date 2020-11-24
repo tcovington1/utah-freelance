@@ -15,16 +15,16 @@ import logoutIcon from '@iconify/icons-mdi/logout';
 const Navbar = ({logout, auth: {isAuthenticated, loading}}) => {
   const authLinks = (
     <ul>
-        <li>
+        <li className="menuLink">
           <Link to='/freelancers'>Browse</Link>  
         </li>
-        <li>
+        <li className="menuLink">
           <Link to='/dashboard'>
             <Icon style={{marginRight: '.5em'}} width="3.5rem" icon={accountIcon} className='lg-hide' />
             <span className='mob-hide'>Profile</span>
           </Link>             
         </li>
-        <li>
+        <li className="menuLink">
           <Link onClick={logout}>
             <Icon icon={logoutIcon} width="3.5rem"  className='lg-hide'/>           
             <span className='mob-hide'>Logout</span>
@@ -35,13 +35,13 @@ const Navbar = ({logout, auth: {isAuthenticated, loading}}) => {
   )
   const guestLinks = (
     <ul>
-        <li>
+        <li className="menuLink">
           <Link to='/freelancers'>Home</Link>             
         </li>
-        <li>
+        <li className="menuLink">
           <Link to='/login'>Login</Link>              
         </li>
-        <li>
+        <li className="menuLink">
           {/* <Link to='/register'>Register</Link>              */}
           <Link to='/login' className="btn btn-primary_inverted">Register As Freelancer</Link>
         </li>
