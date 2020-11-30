@@ -2,7 +2,7 @@
   display: inline-block;
   // background-color: $primary-color;
   color: $light-color;
-  padding: 1rem 10rem; 
+  padding: 1rem 7rem; 
   border-radius: .5rem;
   cursor: pointer;
   border: none;
@@ -65,7 +65,7 @@
       background-color: lighten($primary-color, 30%);
     }
     &-primary {
-
+      border: 2px solid $secondary-color;
       background: $primary-linear;
     }
     &-primary_inverted {

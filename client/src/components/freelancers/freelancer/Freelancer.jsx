@@ -10,7 +10,9 @@ import { connect } from 'react-redux'
 // Icons
 import { Icon, InlineIcon } from '@iconify/react';
 import starIcon from '@iconify/icons-mdi/star';
+import arrowLeftCircleOutline from '@iconify/icons-mdi/arrow-left-circle-outline';
 import Navbar from '../../layout/Navbar'
+
 
 
 const Freelancer = ({ match, getFreelancerById, freelancer: { 
@@ -32,7 +34,10 @@ const Freelancer = ({ match, getFreelancerById, freelancer: {
   return (
     <>
     <div style={{margin: '7rem 7rem', maxWidth: '1140px'}}>
-
+    <div style={{display: "flex"}}>
+    <div className='center-y'><Icon icon={arrowLeftCircleOutline} /></div>
+      <Link to='/freelancers' >Back</Link>
+    </div>
     <div className="flex">
       <div className="main">
       <h1 className='heading_main'>{name}</h1>
@@ -47,15 +52,12 @@ const Freelancer = ({ match, getFreelancerById, freelancer: {
           <div>{averageRating}</div>
           
           <Link className='btn btn-primary btn-sm'>Read Reviews</Link>
-          <Link className='btn btn-primary_inverted btn-sm'>Write a Review</Link>
+          <Link className='btn btn-primary_inverted btn-sm my-1'>Write a Review</Link>
           <a href={website} className='btn btn-gray btn-sm'>Visit Website</a>
         </div>
       </div>
     </div>
-    <div className="cntr">
-      <Link to='/freelancers' className=' btn btn-primary_inverted btn-med my-half' >Back</Link>
-    </div>
-      </div>
+  </div>
     </>
   )
 }

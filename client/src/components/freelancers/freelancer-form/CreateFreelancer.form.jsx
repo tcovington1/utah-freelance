@@ -38,6 +38,7 @@ const CreateFreelancer = ({ createFreelancer, history }) => {
    
   return (
     <>
+
       <h1 className="large text-primary center">
        Create Your Freelancer Profile
       </h1> 
@@ -68,11 +69,11 @@ const CreateFreelancer = ({ createFreelancer, history }) => {
           <input type="text" placeholder='Email' name='email' value={email} onChange={e => onChange(e)} />
         </div>
         <div className="form-group">
-          <small className="form-text">Could be your own or a company website</small>
+          <small className="form-text">Please provide your personal or company website (e.g. https://www.example.com)</small>
           <input type="text" placeholder='Website' name='website' value={website} onChange={e => onChange(e)}/>
         </div>
         <div className="form-group">
-          <small className="form-text">Provide the best number to contact you.</small>
+          <small className="form-text">Provide the best number to contact you</small>
           <input type="text" placeholder='Phone' name='phone' value={phone} onChange={e => onChange(e)}/>
         </div>
         <div className="form-group">
@@ -116,10 +117,11 @@ const CreateFreelancer = ({ createFreelancer, history }) => {
         </Fragment>}
         </div> */}
         <div className="cntr">
-          <input type="submit" className='btn btn-primary my-1' />
-          <Link to='/dashboard' className='btn btn-primary_inverted'>Go back</Link>
+          <input type="submit" className='btn btn-primary m-1' />
+          <Link to='/dashboard' className='btn btn-primary_inverted m-1'>Go back</Link>
         </div>
       </form>
+
     </>
   )
 }
