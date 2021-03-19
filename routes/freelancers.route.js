@@ -33,6 +33,7 @@ router
   .route('/')
   .get(advancedResults(Freelancer, 'services'), getFreelancers)
   .post(protect, authorize('publisher', 'admin'), createFreelancer)
+  // .post(createFreelancer)
 
   router.route('/me')
   .get(protect, authorize('publisher', 'admin'), getUserFreelancer);
