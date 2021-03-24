@@ -38,9 +38,10 @@ exports.getFreelancer = asyncHandler(async (req, res, next) => {
 // @access Private (need a token)
 exports.createFreelancer = asyncHandler(async (req, res, next) => {
   // whatever we want to do go here
-
+  console.log(req.body)
   // Add user to req.body
   req.body.user = req.user.id;
+  // req.body.user = id;
 
   // Check for published freelaner profile
   const publishedFreelancer = await Freelancer.findOne({

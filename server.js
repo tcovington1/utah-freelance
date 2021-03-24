@@ -73,9 +73,9 @@ app.use(limiter);
 // Prevent http param pollution
 app.use(hpp());
 
-// Enable CORS
+//! Enable CORS
 
-app.use(cors());
+ app.use(cors());
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')))
@@ -98,6 +98,7 @@ const server = app.listen(PORT, console.log(`Server running in ${process.env.NOD
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err, promise) => {
+  console.log("There was an error connecting to MongoDb")
   console.log(`Error: ${err.message.red.bold}`);
   // Close server & exit process
   server.close(() => process.exit(1))
