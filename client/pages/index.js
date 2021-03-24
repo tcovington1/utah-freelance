@@ -30,10 +30,6 @@ const Home = ({ freelancers }) => (
     <Hero />
     <Features />
     <NewLancers freelancers={freelancers}/>
-
-      <button onClick={getApi}>Get data</button>
-      {/* {console.log(freelancers?.data)} */}
-      {/* {freelancers?.data?.map(freelancer => <h1>{freelancer.name}</h1>)} */}
   
   </div>
 )
