@@ -3,6 +3,8 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import { Dashboard } from "./components/App/Dashboard";
+import { ProtectedRoute } from "./components/Auth/ProtectedRoute";
 import { Freelancers } from "./components/Freelancers";
 import { Home } from "./components/Home";
 import { Login } from "./components/Login";
@@ -24,6 +26,9 @@ function App() {
           <Home />
         </Route>
       </Switch>
+        <ProtectedRoute exact path='/dashboard'>
+          <Dashboard />
+        </ProtectedRoute>
     </div>
   </Router>
   );
