@@ -9,10 +9,10 @@ export const Nav = () => {
         <div className="relative z-20">
           <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-5 sm:px-6 sm:py-4 lg:px-8 md:justify-start md:space-x-10">
             <div>
-              <a href="#" className="flex">
-                <span className="sr-only">Workflow</span>
+              <div href="#" className="flex">
+                <span className="sr-only">Utah Freelance</span>
                 <img className="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="" />
-              </a>
+              </div>
             </div>
             <div className="-mr-2 -my-2 md:hidden">
               <button type="button" className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
@@ -26,9 +26,9 @@ export const Nav = () => {
             <div className="hidden md:flex-1 md:flex md:items-center md:justify-between">
               <nav className="flex space-x-10">
                 <div>
-                  <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                  <span href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
                     <Link to="/">Home</Link>
-                  </a>
+                  </span>
                 </div>
                 <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
                   <Link to="/freelancers">Freelancers</Link>

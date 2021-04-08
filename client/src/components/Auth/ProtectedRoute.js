@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Redirect } from "react-router-dom";
 
 export const ProtectedRoute = ({ children, ...rest }) => {
-  const isAuthenticated = false;
+  const isAuthenticated = true;
   return (
     <div>
       <Route {...rest} render={({ location }) => {

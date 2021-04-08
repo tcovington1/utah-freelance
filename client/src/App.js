@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import { Dashboard } from "./components/App/Dashboard";
 import { ProtectedRoute } from "./components/Auth/ProtectedRoute";
-import { Freelancers } from "./components/Freelancers";
+import { FreelancersList } from "./components/FreelancersList";
 import { Home } from "./components/Home";
 import { Login } from "./components/Login";
 import { Nav } from "./components/Nav";
@@ -14,10 +14,10 @@ function App() {
   return (
     <Router>
       <Nav />
-    <div>
+    <>
       <Switch>
         <Route path="/freelancers">
-          <Freelancers />
+          <FreelancersList />
         </Route>
         <Route path="/login">
           <Login />
@@ -29,7 +29,7 @@ function App() {
         <ProtectedRoute exact path='/dashboard'>
           <Dashboard />
         </ProtectedRoute>
-    </div>
+    </>
   </Router>
   );
 }
