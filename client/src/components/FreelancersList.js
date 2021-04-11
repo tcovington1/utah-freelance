@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import {Freelancer} from './Freelancer'
-import axios from '../axios'
+import axios from '../constants'
 
 export const FreelancersList = () => {
   const [ freelancers, setFreelancers ] = useState([])
