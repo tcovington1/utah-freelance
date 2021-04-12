@@ -4,10 +4,13 @@ import Freelancer from './Freelancer'
 const PORT = 'http://localhost:5000/api/v1'
 // { freelancers }
 const Freelancers = ({ freelancers }) => ( 
+  
   <>
+  {console.log(freelancers?.data?._id)}
     <ul className="mx-auto space-y-16 sm:grid sm:grid-cols-2 sm:gap-16 sm:space-y-0 lg:grid-cols-3 lg:max-w-5xl">
       {console.log(`freelancers data: ${freelancers}`)}
       {freelancers?.data?.map(freelancer => (
+        // console.log(`Data: ${freelancer.id}`)
         <Freelancer freelancer={freelancer}/>
       ))}
     </ul>

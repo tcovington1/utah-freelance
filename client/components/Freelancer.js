@@ -3,10 +3,12 @@ import Link from 'next/link'
 
 const Freelancer = ({ freelancer }) => ( 
   <>
-  {console.log(freelancer)}
+  {/* {console.log(freelancer.id)} */}
       <li>
       <div className="space-y-6">
-        <img className="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="" />
+        <Link href='/freelancer/[id]' as={`/freelancer/${freelancer.id}`}>
+          <img className="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="" />
+        </Link>
         <div className="space-y-2">
           <div className="text-lg leading-6 font-medium space-y-1">
             <h3>{freelancer.name}</h3>
