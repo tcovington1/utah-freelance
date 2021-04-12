@@ -88,7 +88,6 @@ exports.logout = asyncHandler(async (req, res, next) => {
 //* @route GET /api/v1/auth/me
 //* @access Private (does need a token)
 exports.getMe = asyncHandler(async (req, res, next) => {
-  console.log(`req: ${req}`)
   const user = await User.findById(req.user.id);
 
   res.status(200).json({
@@ -123,7 +122,6 @@ exports.updateDetails = asyncHandler(async (req, res, next) => {
 //* @route Put /api/v1/auth/updatepassword
 //* @access Private (does need a token)
 exports.updatePassword = asyncHandler(async (req, res, next) => {
-  
   const user = await User.findById(req.user.id).select('+password');
 
   // Check current password

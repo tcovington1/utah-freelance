@@ -25,18 +25,7 @@ dotenv.config({
 //connect to db.js file
 connectDB();
 
-const app = express();
-const corsOptions = {
-  origin: 'http://localhost:3000',
-}
-app.use(cors(corsOptions));
-app.options('*', cors())
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+
 // we are bringing in the router files to use
 //Anytime we create a route, need to bring it in here.
 const freelancers = require('./routes/freelancers.route')
@@ -45,6 +34,7 @@ const auth = require('./routes/auth.route')
 const users = require('./routes/users.route')
 const reviews = require('./routes/reviews.route')
 
+const app = express();
 
 // body parser - this helps us get req.body in controllers
 app.use(express.json());
@@ -85,9 +75,11 @@ app.use(hpp());
 
 //! Enable CORS
 
+ app.use(cors());
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')))
+
 
 // Now we mount the route files from line 4 to a url
 // Mount routers
