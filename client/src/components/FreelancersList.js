@@ -1,18 +1,22 @@
 import { useEffect, useState } from 'react'
-import {  useDispatch, useSelector } from 'react-redux'
-import axios from '../constants'
-import { Freelancer } from './Freelancer'
-import { getFreelancers } from '../redux/actions/freelancers'
+import {Freelancer} from './Freelancer'
+import axios from '../axios'
 
 export const FreelancersList = () => {
-  const freelancers = useSelector((state)=> state.freelancers);
-  const dispatch = useDispatch();
+  const [ freelancers, setFreelancers ] = useState([])
 
-  console.log(freelancers)
+  const getFreelancers = () => {
+    axios.get('/api/v1/freelancers')
+      .then((res) => {
+        console.log(res.data.data)
+        setFreelancers(res.data)
+      })
+      .catch((err) => console.log(err))
+  }
 
   useEffect(() => {
-    dispatch(getFreelancers())
-  }, [dispatch])
+    getFreelancers()
+  }, [])
   return (
     <>
        <div class="bg-white">
